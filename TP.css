@@ -1,0 +1,154 @@
+
+
+body{
+	font-family: 'Roboto', sans-serif;
+	background: white;
+}
+
+.social-bar {
+	position: fixed;
+	right: 0;
+	top: 35%;
+	font-size: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	z-index: 100;
+}
+
+.icon {
+	color: white;
+	text-decoration: none;
+	padding: .7rem;
+	display: flex;
+	transition: all .5s;
+}
+
+.icon-facebook2 {
+	background: #2E406E;
+}
+
+.icon-twitter {
+	background: #339DC5;
+}
+.icon-instagram {
+	background: #3F60A5;
+}
+.icon-exit {
+	background: #E83028;
+}
+.icon:first-child {
+	border-radius: 1rem 0 0 0;
+}
+
+.icon:last-child {
+	border-radius: 0 0 0 1rem;
+}
+
+.icon:hover {
+	padding-right: 3rem;
+	border-radius: 1rem 0 0 1rem;
+	box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.42);
+}
+header{
+	background: url(./imagenes/andrii-leonov-XNeW3Hr_XCM-unsplash.jpg);
+	height: 100px;
+	background-size:cover
+	background-repeat:no-repeat;
+	overflow:hidden;
+	border:  2px solid blueviolet;
+}
+section{
+	min-width: 1000px;
+	margin:auto
+	padding:30px 0
+}
+
+h2{
+	text-align: left;
+	margin:20px;
+	border: 2px solid blueviolet;
+	height: auto;
+	box-shadow: 3px 3px 3px grey;
+	text-indent: 40px
+}
+.fotoperfil { 
+	background-size:cover
+	padding: 80px; 
+	margin: 20px;
+	 border: 2px solid black;
+	 float: left; 
+	width: 160px;
+	height: 160px;
+	border-radius: 100px;
+	box-shadow: 10px 5px 5px black;
+ }
+ 
+
+ .footer {
+	background: url(./imagenes/andrii-leonov-XNeW3Hr_XCM-unsplash.jpg);
+	height: 100px;
+	
+	background-size:cover
+	background-repeat:no-repeat;
+	overflow:hidden;
+	border:  2px solid blueviolet;
+  }
+  .columna2{
+	  float:left;
+	  width: 47%;
+	  padding: 20px;
+	  height: auto;
+	  box-shadow: 3px 3px 10px inset grey;
+	animation-duration: 2s;
+	animation-name: slidein ;
+
+  }
+  .columna1{
+	float:right;
+	width: 47%;
+	padding: 20px;
+	height: auto;
+	box-shadow: 3px 3px 10px inset grey;
+}
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+  }
+  .skill{
+	text-align: center;
+	font: weight 500px;;
+	margin:20px;
+	border: 2px solid blueviolet;
+	height: auto;
+	box-shadow: 3px 3px 3px grey;
+  }
+  .titulo{
+	  font-size: 20px;
+	  font-weight:bolder;
+	
+  }
+  .subtitulo2{
+	  font-size: smaller;
+	  font-weight: 100;
+	  padding: 5px;
+	  margin: 10px;
+	  text-indent: 40px
+  }
+  .fotopequeña{
+	background-size:cover
+	padding: 10px; 
+	margin: 2px;
+	 float:left; 
+	width: 45px;
+	height: 45px;
+
+
+  }
+
+.listafoto{
+	display:flex;
+	flex-direction: column;
+
+}
