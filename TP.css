@@ -2,7 +2,6 @@
 
 body{
 	font-family: 'Roboto', sans-serif;
-	background: white;
 }
 
 .social-bar {
@@ -13,7 +12,7 @@ body{
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
-	z-index: 100;
+	z-index: 2000;
 }
 
 .icon {
@@ -53,28 +52,16 @@ body{
 header{
 	background: url(./imagenes/andrii-leonov-XNeW3Hr_XCM-unsplash.jpg);
 	height: 100px;
-	background-size:cover
+	background-size:cover;
 	background-repeat:no-repeat;
 	overflow:hidden;
 	border:  2px solid blueviolet;
 }
-section{
-	min-width: 1000px;
-	margin:auto
-	padding:30px 0
-}
 
-h2{
-	text-align: left;
-	margin:20px;
-	border: 2px solid blueviolet;
-	height: auto;
-	box-shadow: 3px 3px 3px grey;
-	text-indent: 40px
-}
+
+
 .fotoperfil { 
-	background-size:cover
-	padding: 80px; 
+	background-size:cover;
 	margin: 20px;
 	 border: 2px solid black;
 	 float: left; 
@@ -88,57 +75,36 @@ h2{
  .footer {
 	background: url(./imagenes/andrii-leonov-XNeW3Hr_XCM-unsplash.jpg);
 	height: 100px;
+	background-size:cover;	
 	
-	background-size:cover
-	background-repeat:no-repeat;
-	overflow:hidden;
 	border:  2px solid blueviolet;
   }
   .columna2{
 	  float:left;
-	  width: 47%;
+	  width: auto;
 	  padding: 20px;
 	  height: auto;
 	  box-shadow: 3px 3px 10px inset grey;
-	animation-duration: 2s;
-	animation-name: slidein ;
 
   }
   .columna1{
 	float:right;
-	width: 47%;
+	width: auto;
 	padding: 20px;
 	height: auto;
 	box-shadow: 3px 3px 10px inset grey;
 }
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
+.row{
+display: flex;
+justify-content: space-around;
+flex-wrap: wrap;
   }
-  .skill{
-	text-align: center;
-	font: weight 500px;;
-	margin:20px;
-	border: 2px solid blueviolet;
-	height: auto;
-	box-shadow: 3px 3px 3px grey;
-  }
-  .titulo{
-	  font-size: 20px;
-	  font-weight:bolder;
-	
-  }
-  .subtitulo2{
-	  font-size: smaller;
-	  font-weight: 100;
-	  padding: 5px;
-	  margin: 10px;
-	  text-indent: 40px
-  }
+
+
+
   .fotopequeña{
-	background-size:cover
-	padding: 10px; 
+	background-size:cover;
+	
 	margin: 2px;
 	 float:left; 
 	width: 45px;
@@ -151,4 +117,16 @@ h2{
 	display:flex;
 	flex-direction: column;
 
+
 }
+.icon-pencil:before {
+	content: "\e905";
+  }
+  .icon-bin:before {
+	content: "\e9ac";
+  }
+  .icon-plus:before {
+	content: "\ea0a";
+  }
+
+
