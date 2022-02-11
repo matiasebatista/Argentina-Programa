@@ -81,16 +81,16 @@ header{
   }
   .columna2{
 	  float:left;
-	  width: auto;
-	  padding: 20px;
+	  width: 45%;
+	  padding: 40px;
 	  height: auto;
 	  box-shadow: 3px 3px 10px inset grey;
 
   }
   .columna1{
 	float:right;
-	width: auto;
-	padding: 20px;
+	width: 45%;
+	padding:40px;
 	height: auto;
 	box-shadow: 3px 3px 10px inset grey;
 }
