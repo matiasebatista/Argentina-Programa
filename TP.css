@@ -68,7 +68,7 @@ header{
 	width: 160px;
 	height: 160px;
 	border-radius: 100px;
-	box-shadow: 10px 5px 5px black;
+	box-shadow: 5px 5px 5px black;
  }
  
 
@@ -76,15 +76,14 @@ header{
 	background: url(./imagenes/andrii-leonov-XNeW3Hr_XCM-unsplash.jpg);
 	height: 100px;
 	background-size:cover;	
-	
-	border:  2px solid blueviolet;
   }
   .columna2{
 	  float:left;
 	  width: 45%;
 	  padding: 40px;
 	  height: auto;
-	  box-shadow: 3px 3px 10px inset grey;
+ border: 1px solid blueviolet;
+
 
   }
   .columna1{
@@ -92,7 +91,9 @@ header{
 	width: 45%;
 	padding:40px;
 	height: auto;
-	box-shadow: 3px 3px 10px inset grey;
+	border: 1px solid blueviolet;
+	
+
 }
 .row{
 display: flex;
@@ -129,4 +130,40 @@ flex-wrap: wrap;
 	content: "\ea0a";
   }
 
+  .NombreProyecto{
+	  color:#339DC5;
+	  font-size: 150%;
+	  font-weight:600;
+  }
 
+  .descripcion{
+	  font-weight: 500;
+  }
+
+  .subtitulo{
+	  font-size: 180%;
+	  font-weight: 600;
+  }
+  .subtitulo2{
+	  font-weight: 600;
+	  font-size: 130%;
+	  text-indent: 20px;
+  }
+.textocolumna{
+	font-weight: 300;
+	font-size: 110%;
+}
+
+#progressbar {
+	background-color: #20201F;
+	border-radius: 20px; /* (heightOfInnerDiv / 2) + padding */
+	padding: 4px;
+  }
+  
+  #progressbar>div {
+	background-color: blueviolet;
+	width: 20%;
+	/* Adjust with JavaScript */
+	height: 16px;
+	border-radius: 10px;
+  }
