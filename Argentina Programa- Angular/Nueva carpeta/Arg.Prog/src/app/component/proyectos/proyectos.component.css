@@ -1,0 +1,17 @@
+.subtitulo{
+    font-size: 180%;
+    font-weight: 600;
+}
+.listafoto{
+	display:flex;
+	flex-direction: column;
+}
+.textocolumna{
+	font-weight: 300;
+	font-size: 110%;
+}
+.NombreProyecto{
+    color:#339DC5;
+    font-size: 150%;
+    font-weight:600;
+}

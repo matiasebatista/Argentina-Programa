@@ -1,0 +1,22 @@
+#progressbar {
+	background-color: #20201F;
+	border-radius: 20px; /* (heightOfInnerDiv / 2) + padding */
+	padding: 4px;
+  }
+  
+  #progressbar>div {
+	background-color: blueviolet;
+	width: 20%;
+	/* Adjust with JavaScript */
+	height: 16px;
+	border-radius: 10px;
+  }
+  .subtitulo2{
+    font-weight: 600;
+    font-size: 130%;
+    text-indent: 20px;
+}
+.subtitulo{
+    font-size: 180%;
+    font-weight: 600;
+}

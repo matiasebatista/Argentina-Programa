@@ -1,0 +1,10 @@
+.fotoperfil { 
+	background-size:cover;
+	margin: 20px;
+	 border: 2px solid black;
+	 float: left; 
+	width: 160px;
+	height: 160px;
+	border-radius: 100px;
+	box-shadow: 5px 5px 5px black;
+ }

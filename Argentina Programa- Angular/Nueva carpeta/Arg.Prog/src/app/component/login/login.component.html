@@ -1,0 +1,44 @@
+<div>
+  <ul>
+      
+      <li><a href="localhost:4200/Login">LogIn</a></li>
+      <li><a href="localhost:4200/Registrar">Registrar</a></li>
+    </ul>
+</div>
+
+
+<div style="display:flex; justify-content:center;align-items:center">
+<form [formGroup]="form" (ngSubmit)="onEnviar($event)">
+    <div style="margin:10px">
+      <label for="exampleInputEmail1" class="form-label">Email</label>
+      <input type="email" formControlName="email"  [ngClass]="{'is-invalid':Email?.errors && Email?.touched,'is-valid': !Email?.errors && Email?.touched}" class="form-control" id="exampleInputEmail1" >
+     
+      <div *ngIf="Email?.errors && Email?.touched">
+          <p *ngIf="Email?.hasError('required')" class="text-danger">
+            El email es requerido.
+          </p>
+          <p *ngIf="Email?.hasError('email')">
+            El formato del email debe ser válido.
+          </p>
+      </div>
+    </div>
+
+    <div>
+      <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+      <input type="password" formControlName="password"  [ngClass]="{'is-invalid':Email?.errors && Email?.touched,'is-valid': !Email?.errors && Email?.touched}" class="form-control" id="exampleInputPassword1">
+
+
+  <div *ngIf="Password?.errors && Password?.touched">
+          <p *ngIf="Password?.hasError('required')" >
+            El Password es requerido.
+          </p>
+          <p *ngIf="Password?.errors?.['minlength']">
+            La contraseña debe tener al menos 8 caracteres.
+          </p>
+      </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+
+  </form>
+</div>
