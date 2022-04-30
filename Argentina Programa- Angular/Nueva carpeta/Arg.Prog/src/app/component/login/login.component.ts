@@ -26,19 +26,19 @@ form:FormGroup;
 
   ngOnInit(): void {
   }
-  get Email(){
-    return this.form.get('email');
-  }
+//   get Email(){
+//     return this.form.get('email');
+//   }
   
-  get Password(){
-    return this.form.get('password');
-  }
-onEnviar(event:Event){
-  event.preventDefault;
-  this.autenticacionService.IniciarSesion(this.form.value).subscribe(data => { console.log("DATA:" + JSON.stringify(data));
-this.ruta.navigate(['/portfolio']);
-})
-}
+//   get Password(){
+//     return this.form.get('password');
+//   }
+// onEnviar(event:Event){
+//   event.preventDefault;
+//   this.autenticacionService.IniciarSesion(this.form.value).subscribe(data => { console.log("DATA:" + JSON.stringify(data));
+// this.ruta.navigate(['/portfolio']);
+// })
+// }
 
 
 }

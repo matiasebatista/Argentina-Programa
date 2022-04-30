@@ -5,6 +5,10 @@ import { LoginComponent } from "./component/login/login.component";
 import { PortfolioComponent } from "./component/portfolio/portfolio.component";
 import { GuardGuard } from './service/guard.guard';
 
+
+
+
+
 const routes : Routes = [
   {path:'login',component: LoginComponent, pathMatch:"full"},
   {path:'portfolio',component:PortfolioComponent, canActivate:[GuardGuard]},

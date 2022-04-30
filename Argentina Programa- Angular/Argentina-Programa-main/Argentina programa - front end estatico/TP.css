@@ -1,0 +1,169 @@
+
+
+body{
+	font-family: 'Roboto', sans-serif;
+}
+
+.social-bar {
+	position: fixed;
+	right: 0;
+	top: 35%;
+	font-size: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	z-index: 2000;
+}
+
+.icon {
+	color: white;
+	text-decoration: none;
+	padding: .7rem;
+	display: flex;
+	transition: all .5s;
+}
+
+.icon-facebook2 {
+	background: #2E406E;
+}
+
+.icon-twitter {
+	background: #339DC5;
+}
+.icon-instagram {
+	background: #3F60A5;
+}
+.icon-exit {
+	background: #E83028;
+}
+.icon:first-child {
+	border-radius: 1rem 0 0 0;
+}
+
+.icon:last-child {
+	border-radius: 0 0 0 1rem;
+}
+
+.icon:hover {
+	padding-right: 3rem;
+	border-radius: 1rem 0 0 1rem;
+	box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.42);
+}
+header{
+	background: url(./imagenes/andrii-leonov-XNeW3Hr_XCM-unsplash.jpg);
+	height: 100px;
+	background-size:cover;
+	background-repeat:no-repeat;
+	overflow:hidden;
+	border:  2px solid blueviolet;
+}
+
+
+
+.fotoperfil { 
+	background-size:cover;
+	margin: 20px;
+	 border: 2px solid black;
+	 float: left; 
+	width: 160px;
+	height: 160px;
+	border-radius: 100px;
+	box-shadow: 5px 5px 5px black;
+ }
+ 
+
+ .footer {
+	background: url(./imagenes/andrii-leonov-XNeW3Hr_XCM-unsplash.jpg);
+	height: 100px;
+	background-size:cover;	
+  }
+  .columna2{
+	  float:left;
+	  width: 45%;
+	  padding: 40px;
+	  height: auto;
+ border: 1px solid blueviolet;
+
+
+  }
+  .columna1{
+	float:right;
+	width: 45%;
+	padding:40px;
+	height: auto;
+	border: 1px solid blueviolet;
+	
+
+}
+.row{
+display: flex;
+justify-content: space-around;
+flex-wrap: wrap;
+  }
+
+
+
+  .fotopequeña{
+	background-size:cover;
+	
+	margin: 2px;
+	 float:left; 
+	width: 45px;
+	height: 45px;
+
+
+  }
+
+.listafoto{
+	display:flex;
+	flex-direction: column;
+
+
+}
+.icon-pencil:before {
+	content: "\e905";
+  }
+  .icon-bin:before {
+	content: "\e9ac";
+  }
+  .icon-plus:before {
+	content: "\ea0a";
+  }
+
+  .NombreProyecto{
+	  color:#339DC5;
+	  font-size: 150%;
+	  font-weight:600;
+  }
+
+  .descripcion{
+	  font-weight: 500;
+  }
+
+  .subtitulo{
+	  font-size: 180%;
+	  font-weight: 600;
+  }
+  .subtitulo2{
+	  font-weight: 600;
+	  font-size: 130%;
+	  text-indent: 20px;
+  }
+.textocolumna{
+	font-weight: 300;
+	font-size: 110%;
+}
+
+#progressbar {
+	background-color: #20201F;
+	border-radius: 20px; /* (heightOfInnerDiv / 2) + padding */
+	padding: 4px;
+  }
+  
+  #progressbar>div {
+	background-color: blueviolet;
+	width: 20%;
+	/* Adjust with JavaScript */
+	height: 16px;
+	border-radius: 10px;
+  }
