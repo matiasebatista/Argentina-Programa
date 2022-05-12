@@ -11,7 +11,7 @@ import { GuardGuard } from './service/guard.guard';
 
 const routes : Routes = [
   {path:'login',component: LoginComponent, pathMatch:"full"},
-  {path:'portfolio',component:PortfolioComponent, canActivate:[GuardGuard]},
+  {path:'portfolio',component:PortfolioComponent},
   {path:'',redirectTo:'login',pathMatch:'full'} 
   ];
 

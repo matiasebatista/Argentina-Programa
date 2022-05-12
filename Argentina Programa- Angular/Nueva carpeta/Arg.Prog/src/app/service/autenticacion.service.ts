@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url=""
+  url="localhost:4200"
 currentUserSubject: BehaviorSubject<any>;
 
   constructor(private http: HttpClient) {
