@@ -32,11 +32,13 @@ public class Persona implements Serializable {
     private Long id;
     @Column(name = "nombre")
     private String nombre;
+    @Column(name ="contraseña")
+    private String contraseña;
     @Column(name = "apellido")
     private String apellido;
     @Column(name = "domicilio")
     private String domicilio;
-    @Column(name = "fecheNac")
+    @Column(name = "feche_nac")
     @Temporal(TemporalType.DATE)
     private Date fecha;
     @Column(name = "correo")

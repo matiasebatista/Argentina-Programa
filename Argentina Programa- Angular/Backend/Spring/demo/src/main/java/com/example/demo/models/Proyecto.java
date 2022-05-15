@@ -31,11 +31,11 @@ public class Proyecto implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
       @Column(name = "id")
     private Long id;
-    @Column(name = "Nombre")
+    @Column(name = "nombre")
     private String Nombre; 
     @Column(name = "descripcion_proy")
     private String descripcion_proy;
-    @Column(name = "año_proy")
+    @Column(name = "Año")
     private String año_proy;
     @Column(name = "Persona_id")
     private Long persona; 

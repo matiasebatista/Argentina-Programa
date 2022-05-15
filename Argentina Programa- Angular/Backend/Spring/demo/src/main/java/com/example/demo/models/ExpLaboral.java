@@ -33,9 +33,9 @@ public class ExpLaboral implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
         @Column(name = "id")
         private Long id;
-        @Column(name = "nombreEmpresa")
+        @Column(name = "nombre_empresa")
         private String nombre;
-        @Column(name = "esTrabajoActual")
+        @Column(name = "es_trabajo_actual")
         private Integer esTrabajoActual;
         @Column(name = "fechainicio")
     @Temporal(javax.persistence.TemporalType.DATE)

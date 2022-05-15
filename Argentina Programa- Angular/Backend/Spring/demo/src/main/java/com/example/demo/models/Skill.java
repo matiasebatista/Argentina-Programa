@@ -32,8 +32,10 @@ public class Skill implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-    @Column(name = "nombre_tipo")
+    @Column(name = "Nombre")
     private String Nombre;
+    @Column(name = "porcentaje")
+    private String Porcentaje;
     @Column(name = "Persona_id")
     private Long persona; 
 }
