@@ -1,0 +1,59 @@
+<div id="educacion">
+    <!-- Modal -->
+    <div  id="educacionForm" tabindex="-1" aria-labelledby="educacionFormLabel" aria-hidden="true">
+      <div >
+        <div >
+          <div >
+            <h5 id="educacionFormLabel">Educacion</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="educacionForm" (ngSubmit)="onSubmit()">
+              <input type="hidden" name="id" formControlName="id">
+  
+              <div class="form-group">
+                <label for="establecimiento">Establecimiento</label>
+                <div >
+                  <input type="text" name="establecimiento" formControlName="establecimiento" class="form-control" required>
+                </div>
+              </div>
+  
+              <div >
+                <label for="año_ingreso" >Año de ingreso</label>
+                <div >
+                  <input type="date" name="año de ingreso" formControlName="año_ingreso" class="form-control" required>
+                </div>
+              </div>
+              <div >
+                <label for="año_egreso" >Año de egreso</label>
+                <div >
+                  <input type="date" name="año de egreso" formControlName="año_egreso" class="form-control" required>
+                </div>
+              </div>
+  
+              <div>
+                <label for="nombre_titulo">Nombre del titulo</label>
+                <div>
+                  <input type="text" name="Nombre del titulo" formControlName="nombre_titulo" class="form-control" required>
+                </div>
+              </div>
+              
+              <div>
+                <label for="nivel">Nivel</label>
+                <div>
+                  <input type="text" name="Nivel" formControlName="nivel" class="form-control" required>
+                </div>
+              </div>
+  
+  
+              <div >
+                <button type="button"  data-bs-dismiss="modal">Close</button>
+                <button type="submit">Save changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  

@@ -4,14 +4,14 @@
  */
 package com.example.demo.Controller;
 
-import com.example.demo.Services.AcercadeService;
+
 import com.example.demo.Services.EducaciónService;
 import com.example.demo.Services.ExpLaboralService;
 import com.example.demo.Services.PersonaService;
 import com.example.demo.Services.ProyectoService;
 import com.example.demo.Services.SkillService;
 
-import com.example.demo.models.Acercade;
+
 import com.example.demo.models.Educación;
 import com.example.demo.models.ExpLaboral;
 import java.util.List;
@@ -37,8 +37,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
     @Autowired     
     PersonaService PersonaService;   
-    @Autowired
-    AcercadeService AcercadeService;
     @Autowired
     ExpLaboralService ExpLaboralService;
     @Autowired
@@ -75,25 +73,16 @@ public class Controller {
     public Persona editUser(@PathVariable Long id, @RequestBody Persona pers){
         return PersonaService.editUser(id,pers);
     }
-    
-    @PostMapping("/Acercade")
-    public void saveAcercade (@RequestBody Acercade inf){
-        AcercadeService.saveAcercade(inf);     
-    }
-    
-    @GetMapping("/Acercade/{id}")
-    public Acercade findAcercade(@PathVariable Long id){
-        return AcercadeService.findAcercade(id);
+       @GetMapping("/Acercade/{id}")
+    public String findAcercade(@PathVariable Long id){
+        return PersonaService.findAcercade(id);
     }
     
     @PutMapping("/Acercade/{id}")
-    public Acercade editAcercade(@PathVariable Long id, @RequestBody Acercade inf){
-        return AcercadeService.editAcercade(id,inf);
+    public String editAcercade(@PathVariable Long id, @RequestBody String inf){
+        return PersonaService.editAcercade(id,inf);
     }
-      @DeleteMapping("/Acercade/{id}")
-    public String deleteAcercade(@PathVariable Long id ){
-        return AcercadeService.deleteAcercade(id);
-    }
+
     
      @PostMapping("/ExpLaboral")
     public void saveExpLaboral (@RequestBody ExpLaboral info){

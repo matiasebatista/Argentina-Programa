@@ -51,4 +51,19 @@ public class PersonaService {
             return null;
         }
     }
+        
+    public String findAcercade(Long id){
+      return iPersonaRepository.findAcercadebyid(id);
+    }
+    
+     public String editAcercade(Long id,String s){
+        try{
+            Persona p =   iPersonaRepository.findById(id).get();
+            p.setAcercade(s);
+            iPersonaRepository.save(p);
+            return s;
+        }catch(Exception e){
+            return null;
+        }
+    }
 }

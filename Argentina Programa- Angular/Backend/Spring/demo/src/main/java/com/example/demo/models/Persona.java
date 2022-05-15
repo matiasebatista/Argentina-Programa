@@ -43,11 +43,10 @@ public class Persona implements Serializable {
     private String correo;
     @Column(name = "foto")
     private String foto;
+    @Column (name = "acercade")
+    private String acercade;
    
-    @OneToOne (cascade = CascadeType.ALL)
-    @JoinColumn (name = "Persona_id", referencedColumnName = "id")
-    private Acercade acercade;
-    
+
     @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Educación> educación;
        @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
