@@ -18,9 +18,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './service/interceptor.service';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BorrarComponent } from './component/button/borrar/borrar.component';
-import { AgregarComponent } from './component/button/agregar/agregar.component';
-import { EditarComponent } from './component/button/editar/editar.component';
+
 
 @NgModule({
   declarations: [
@@ -33,9 +31,7 @@ import { EditarComponent } from './component/button/editar/editar.component';
     ExpComponent,
     HardandSoftComponent,
     ProyectosComponent,
-    BorrarComponent,
-    AgregarComponent,
-    EditarComponent
+  
   ],
   imports: [
     RouterModule,

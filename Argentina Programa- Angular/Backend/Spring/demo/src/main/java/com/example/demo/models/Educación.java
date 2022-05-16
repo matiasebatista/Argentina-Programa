@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,7 +30,7 @@ import lombok.Setter;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Table(name="educacion")
 public class Educación implements Serializable{
      @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,9 +39,9 @@ public class Educación implements Serializable{
     private Long id;
     @Column(name = "establecimiento")
     private String establecimiento;
-    @Column(name = "año_ingreso")
+    @Column(name = "ano_ingreso")
     private Date AñoIngreso;
-    @Column(name = "año_egreso")
+    @Column(name = "ano_egreso")
     private Date AñoEgreso;
     @Column(name = "nombre_titulo")
     private String nombre_titulo;

@@ -22,11 +22,12 @@ export class EduComponent implements OnInit {
     this.educacionForm=this.formBuilder.group({
       id:[''],
       establecimiento:['',[Validators.required]],
-      año_egreso:['',[Validators.required]],
-      año_ingreso:['',[Validators.required]],
+      ano_egreso:['',[Validators.required]],
+      ano_ingreso:['',[Validators.required]],
       nombre_titulo:['',[Validators.required]],
       nivel:['',[Validators.required]],
-      Persona_id:['']
+      Persona_id:[''],
+      img:[]
     })
    }
 
@@ -45,10 +46,11 @@ export class EduComponent implements OnInit {
       id:'',
       Persona_id:'',
       establecimiento:'',
-      año_egreso:'',
-      año_ingreso:'',
+      ano_egreso:'',
+      ano_ingreso:'',
       nivel:'',
-      nombre_titulo:''
+      nombre_titulo:'',
+      img:''
     })
   }
     private loadForm(educacion:Educacion){
@@ -56,10 +58,11 @@ export class EduComponent implements OnInit {
         id:educacion.id,
         Persona_id:educacion.Persona_id,
         establecimiento:educacion.establecimiento,
-        año_egreso:educacion.año_egreso,
-        año_ingreso:educacion.año_ingreso,
+        ano_egreso:educacion.ano_egreso,
+        ano_ingreso:educacion.ano_ingreso,
         nivel:educacion.nivel,
-        nombre_titulo:educacion.nombre_titulo
+        nombre_titulo:educacion.nombre_titulo,
+        img:educacion.img
       })
     }
     onSubmit(){

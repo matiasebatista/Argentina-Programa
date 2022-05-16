@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `portfolio` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `portfolio`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: portfolio
@@ -26,12 +24,9 @@ DROP TABLE IF EXISTS `proyectos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `proyectos` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `Nombreproy` varchar(45) DEFAULT NULL,
-  `Año` date DEFAULT NULL,
-  `Descripcion` varchar(150) DEFAULT NULL,
+  `Ano` date DEFAULT NULL,
   `Persona_id` int NOT NULL,
   `nombre` varchar(255) DEFAULT NULL,
-  `año_proy` varchar(255) DEFAULT NULL,
   `descripcion_proy` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Proyectos_Persona1_idx` (`Persona_id`),
@@ -57,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-12 19:30:10
+-- Dump completed on 2022-05-16 18:41:13

@@ -16,10 +16,10 @@ url:string="http://localhost:8080/"
     return this.http.get<any>(config.baseUrl + "educacion");
   }
   saveEducacion(educacion:Educacion): Observable<Educacion> {
-    return this.http.post<any>(config.baseUrl + "educacion/create", educacion);
+    return this.http.post<any>(config.baseUrl + "educacion", educacion);
   }
   editEducacion(educacion: Educacion): Observable<any> {
-    return this.http.put<any>(config.baseUrl + "educacion/update", educacion);
+    return this.http.put<any>(config.baseUrl + "educacion", educacion);
   }
   deleteEducacion(id: number): Observable<any> {
     return this.http.delete<any>(config.baseUrl + "educacion/" + id);

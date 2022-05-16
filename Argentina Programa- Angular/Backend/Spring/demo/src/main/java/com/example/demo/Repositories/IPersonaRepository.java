@@ -5,6 +5,7 @@
 package com.example.demo.Repositories;
 
 import com.example.demo.models.Persona;
+import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -18,5 +19,8 @@ public interface IPersonaRepository extends CrudRepository<Persona,Long> {
     
     @Query(value = "SELECT acercade FROM persona WHERE id = :id",nativeQuery = true)
     public String findAcercadebyid (Long id);
+    public Persona findByCorreo(String correo);
+
+    public List<Persona> findByEmailAndIsEnabledTrue(String correo);
     
 }

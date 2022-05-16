@@ -4,6 +4,7 @@
  */
 package com.example.demo.Services;
 
+import com.example.demo.Controller.PasswordEncoder;
 import com.example.demo.models.Persona;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,18 @@ public class PersonaService {
    @Autowired
    
     IPersonaRepository iPersonaRepository;
-   
-    public void registerUser(Persona p ){
-        iPersonaRepository.save(p);
+      
+    @Autowired
+    PasswordEncoder passwordEncoder;
+    public void registerUser(Persona p ) throws Exception{
+           List<Persona> personas = iPersonaRepository.findByEmailAndIsEnabledTrue(p.getCorreo());
+        if (!personas.isEmpty()) {
+            throw new Exception("El email ya está registrado.");
+        } else {
+            
+            p.setEnabled(true);
+            iPersonaRepository.save(p);
+        }
     }
     
     public List<Persona> getUsers(){
@@ -40,6 +50,13 @@ public class PersonaService {
         }catch(Exception e){
             return "No se pudo borrar el usuario";
         }     
+    }
+    public Persona loginUser(Persona userCredential){
+        Persona p = iPersonaRepository.findByCorreo(userCredential.getCorreo());
+        if(p != null && p.getContraseña().equals(userCredential.getContraseña())){
+            return p;
+        }
+        return null;
     }
   
     public Persona editUser(Long id,Persona p){

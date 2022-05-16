@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `portfolio` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `portfolio`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: portfolio
@@ -33,11 +31,9 @@ CREATE TABLE `persona` (
   `correo` varchar(45) DEFAULT NULL,
   `feche_nac` date DEFAULT NULL,
   `foto` varchar(255) DEFAULT NULL,
-  `acercade_id` int DEFAULT NULL,
-  `persona_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_acercade_id_idx` (`acercade_id`),
-  CONSTRAINT `fk_acercade_id` FOREIGN KEY (`acercade_id`) REFERENCES `acercade` (`id`)
+  `acercade` varchar(300) DEFAULT NULL,
+  `contrasena` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -47,7 +43,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (1,'maria','batista',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `persona` VALUES (1,'matias','batista','Medrano 556,Merlo,Buenos Aires','1140444448','matias.e.batista@hotmail.com','1997-08-18',NULL,NULL,'1234asdf');
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-12 19:30:10
+-- Dump completed on 2022-05-16 18:41:13

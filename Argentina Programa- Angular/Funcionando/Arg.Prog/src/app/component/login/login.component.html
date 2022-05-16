@@ -1,29 +1,29 @@
 <form [formGroup]="formularioCreado">
     <div class="form-group">
-        <label for="email">
+        <label for="correo">
             Correo
         </label>
-        <input type="email" name="email" class="form-control" formControlName="email">
-        <div *ngIf="formularioCreado.controls['email'].invalid && formularioCreado.controls['email'].dirty">
-            <div *ngIf="formularioCreado.controls['email'].errors?.['required']" class="alert alert-danger" role="alert">
-                El email es requerido
+        <input type="correo" name="correo" class="form-control" formControlName="correo">
+        <div *ngIf="formularioCreado.controls['correo'].invalid && formularioCreado.controls['correo'].dirty">
+            <div *ngIf="formularioCreado.controls['correo'].errors?.['required']" class="alert alert-danger" role="alert">
+                El correo es requerido
             </div>
-            <div *ngIf="formularioCreado.controls['email'].errors?.['email']" class="alert alert-danger" role="alert">
-                El email debe tener un formato valido
+            <div *ngIf="formularioCreado.controls['correo'].errors?.['correo']" class="alert alert-danger" role="alert">
+                El correo debe tener un formato valido
             </div>
         </div>
     </div>
     <div class="form-group">
-        <label for="password">
+        <label for="contraseña">
             Contraseña
         </label>
-        <input type="password" name="password" class="form-control" formControlName="password">
-        <div *ngIf="formularioCreado.controls['password'].invalid && formularioCreado.controls['password'].dirty">
-            <div *ngIf="formularioCreado.controls['password'].errors?.['required']" class="alert alert-danger"
+        <input type="contraseña" name="contraseña" class="form-control" formControlName="contraseña">
+        <div *ngIf="formularioCreado.controls['contraseña'].invalid && formularioCreado.controls['contraseña'].dirty">
+            <div *ngIf="formularioCreado.controls['contraseña'].errors?.['required']" class="alert alert-danger"
                 role="alert">
                 La contraseña es requerida
             </div>
-            <div *ngIf="formularioCreado.controls['password'].errors?.['minlength']" class="alert alert-danger"
+            <div *ngIf="formularioCreado.controls['contraseña'].errors?.['minlength']" class="alert alert-danger"
                 role="alert">
                 La contraseña debe tener al menos 8 caracteres
             </div>

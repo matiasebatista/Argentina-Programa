@@ -35,7 +35,7 @@ public class Proyecto implements Serializable{
     private String Nombre; 
     @Column(name = "descripcion_proy")
     private String descripcion_proy;
-    @Column(name = "Año")
+    @Column(name = "Ano")
     private String año_proy;
     @Column(name = "Persona_id")
     private Long persona; 

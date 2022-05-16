@@ -9,14 +9,14 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url="localhost:4200"
+  url="localhost:8080/personas/login"
 currentUserSubject: BehaviorSubject<any>;
 
   constructor(private http: HttpClient) {
     this.currentUserSubject= new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser')||'{}'))
    }
 
-IniciarSesion(credenciales:any):Observable<any>{
+ public loginUser(credenciales:any):Observable<any>{
   return this.http.post(this.url,credenciales).pipe(map(data =>{
 sessionStorage.setItem('currentUser',JSON.stringify(data));
 this.currentUserSubject.next(data);
@@ -33,4 +33,7 @@ public logout() {
 public isUserLogged():boolean {
   return sessionStorage.getItem("user") !== null;
 }
+
+
+
 }

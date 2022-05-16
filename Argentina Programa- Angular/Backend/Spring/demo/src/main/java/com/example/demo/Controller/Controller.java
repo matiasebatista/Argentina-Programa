@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -49,8 +50,8 @@ public class Controller {
     
      @PostMapping ("/personas")
      @ResponseBody
-    public void agregarPersona (@RequestBody Persona pers){
-        PersonaService.registerUser(pers);
+    public void agregarPersona (@RequestBody Persona persona) throws Exception{
+        PersonaService.registerUser(persona);
     }
     
     @GetMapping("/personas")
@@ -73,6 +74,11 @@ public class Controller {
     public Persona editUser(@PathVariable Long id, @RequestBody Persona pers){
         return PersonaService.editUser(id,pers);
     }
+    @PostMapping("/personas/login")
+    public Persona loginUser(@RequestBody Persona userCredential){
+        return PersonaService.loginUser(userCredential);
+    }
+               
        @GetMapping("/Acercade/{id}")
     public String findAcercade(@PathVariable Long id){
         return PersonaService.findAcercade(id);
