@@ -13,7 +13,7 @@ constructor(private autenticacionService: AutenticacionService,private rutas:Rou
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       let currentUser=this.autenticacionService.UsuarioAutenticado;
-      if(currentUser && currentUser.accessToken){
+      if(currentUser != false){
         return true;
       }else{
         this.rutas.navigate(['/login'])

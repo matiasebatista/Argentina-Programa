@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -9,7 +9,12 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url="localhost:8080/personas/login"
+  url="http://localhost:8080/personas/login"
+  
+  headers: HttpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+  });
 currentUserSubject: BehaviorSubject<any>;
 
   constructor(private http: HttpClient) {
@@ -17,7 +22,9 @@ currentUserSubject: BehaviorSubject<any>;
    }
 
  public loginUser(credenciales:any):Observable<any>{
-  return this.http.post(this.url,credenciales).pipe(map(data =>{
+  return this.http.post(this.url,credenciales,{
+    headers:this.headers
+  }).pipe(map(data =>{
 sessionStorage.setItem('currentUser',JSON.stringify(data));
 this.currentUserSubject.next(data);
     return data;
@@ -27,13 +34,16 @@ get UsuarioAutenticado() {
   return this.currentUserSubject.value;
 }
 public logout() {
-  sessionStorage.removeItem("user");
+  sessionStorage.removeItem("currentUser");
 }
 
 public isUserLogged():boolean {
-  return sessionStorage.getItem("user") !== null;
+  return sessionStorage.getItem("currentUser") != null;
 }
 
+public idUser (): number {
+  return JSON.parse(sessionStorage.getItem("currentUser")|| "" ).id;
+}
 
 
 }

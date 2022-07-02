@@ -2,22 +2,54 @@
     <span style="display: flex;justify-content: space-between;align-items: center;">
         <p style="padding-left: 30px;" class="subtitulo"> Hard and soft skills</p><span style="padding-right: 40px;" class="icon-plus"></span>
     </span> 
+    <div id="skill">
+      <div  id="skillForm" tabindex="-1" aria-labelledby="educacionFormLabel" aria-hidden="true">
+        <div >
+          <div >
+    
+            <form [formGroup]="skillForm" (ngSubmit)="onSubmit()">
+            
+              <input type="hidden" name="id" formControlName="id">
+              <div class="form-group">
+                <label for="Nombre">Habilidad</label>
+                <div >
+                  <input type="text" name="Nombre" formControlName="Nombre" class="form-control" required>
+                </div>
+              </div>
+            
+      
+                  <div class="form-group">
+                    <label for="porcentaje">Porcentaje</label>
+                    <div >
+                      <input type="text" name="porcentaje" formControlName="porcentaje" class="form-control" required>
+                    </div>
+                  </div>
+            
+      
+            
+            </form>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+    <div>
+      <div>
+        <ul  id="eduList">
+          <li *ngFor="let skill of skillList; let i = index">
+            <h3 class="subtitulo2" id="exp-nombre_empresa">{{ skill.Nombre }} </h3>
+          </li>
+        </ul>
+       
+</div>
+
+
+
     <div style="display:flex;justify-content: center;">
     <p class="subtitulo2">Progreso1</p>
     </div>
     <div id="progressbar">
         <div></div>
       </div>
-      <div style="display:flex;justify-content: center;">
-        <p class="subtitulo2">Progreso2</p>
-        </div>
-        <div id="progressbar">
-            <div></div>
-          </div>
-          <div style="display:flex;justify-content: center;">
-            <p class="subtitulo2">Progreso3</p>
-            </div>
-            <div id="progressbar">
-                <div></div>
-              </div>
-</div>

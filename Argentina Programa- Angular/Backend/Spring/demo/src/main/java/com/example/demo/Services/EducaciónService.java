@@ -6,6 +6,7 @@ package com.example.demo.Services;
 
 import com.example.demo.Repositories.IEducaciónRepository;
 import com.example.demo.models.Educación;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,28 +23,22 @@ public class EducaciónService {
         iEducaciónRepository.save(info);
     }
     
-     public Educación findEducación(Long id){
-        Educación info = iEducaciónRepository.findById(id).orElse(null);
-        return info;
+     public List<Educación> findEducación(Long id){
+        return iEducaciónRepository.findByPersona(id);
+        
     }
      
-     public Educación editEducación(Long id,Educación info){
-        try{
-            info.setId(id);
+     public void editEducación(Educación info){
             iEducaciónRepository.save(info);
-            return info;
-        }catch(Exception e){
-            return null;
-        }
+      
+      
     }
      
-      public String deleteEducación(Long id){
-        try{
+      public void deleteEducación(Long id){
+    
             iEducaciónRepository.deleteById(id);
-            return "Esta información fue borrada";
-        }catch(Exception e){
-            return "No se pudo borrar la información";
-        }     
+    
+ 
     }
    
 }

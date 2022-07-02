@@ -5,6 +5,7 @@
 package com.example.demo.Repositories;
 
 import com.example.demo.models.Educación;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,5 +15,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface IEducaciónRepository extends CrudRepository<Educación,Long> {
+
+    public List<Educación> findByPersona(Long id);
     
 }

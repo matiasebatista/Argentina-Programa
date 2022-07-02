@@ -21,12 +21,15 @@ import com.example.demo.models.Proyecto;
 import com.example.demo.models.Skill;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,6 +38,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author matia
  */
 @RestController
+
 public class Controller {
     @Autowired     
     PersonaService PersonaService;   
@@ -47,14 +51,12 @@ public class Controller {
     @Autowired
     SkillService SkillService;
     
-    
-     @PostMapping ("/personas")
-     @ResponseBody
-    public void agregarPersona (@RequestBody Persona persona) throws Exception{
-        PersonaService.registerUser(persona);
-    }
+   
+   
+
     
     @GetMapping("/personas")
+    @ResponseBody
     public List<Persona> verPersonas(){
         return  PersonaService.getUsers();
     }
@@ -66,6 +68,7 @@ public class Controller {
       
     
     @GetMapping("/personas/{id}")
+     @ResponseBody
     public Persona findUser(@PathVariable Long id){
         return PersonaService.findUser(id);
     }
@@ -74,12 +77,15 @@ public class Controller {
     public Persona editUser(@PathVariable Long id, @RequestBody Persona pers){
         return PersonaService.editUser(id,pers);
     }
+    
     @PostMapping("/personas/login")
+    
     public Persona loginUser(@RequestBody Persona userCredential){
         return PersonaService.loginUser(userCredential);
     }
                
        @GetMapping("/Acercade/{id}")
+         @ResponseBody
     public String findAcercade(@PathVariable Long id){
         return PersonaService.findAcercade(id);
     }
@@ -96,6 +102,7 @@ public class Controller {
     }
     
     @GetMapping("/ExpLaboral/{id}")
+      @ResponseBody
     public ExpLaboral findExpLaboral(@PathVariable Long id){
         return ExpLaboralService.findExpLaboral(id);
     }
@@ -109,23 +116,21 @@ public class Controller {
         return ExpLaboralService.deleteExpLaboral(id);
     }
     
-     @PostMapping("/Educación")
+   @RequestMapping(value="/Educacion",method={RequestMethod.POST,RequestMethod.PUT})
     public void saveEducación(@RequestBody Educación info){
         EducaciónService.saveEducación(info);     
     }
     
-    @GetMapping("/Educación/{id}")
-    public Educación findEducación(@PathVariable Long id){
-        return EducaciónService.findEducación(id);
+    @GetMapping("/Educacion/{Persona_id}")
+      @ResponseBody
+    public List<Educación> findEducación(@PathVariable Long Persona_id){
+        return EducaciónService.findEducación(Persona_id);
     }
     
-    @PutMapping("/Educación/{id}")
-    public Educación editEducación(@PathVariable Long id, @RequestBody Educación info){
-        return EducaciónService.editEducación(id,info);
-    }
-      @DeleteMapping("/Educación/{id}")
-    public String deleteEducación (@PathVariable Long id ){
-        return EducaciónService.deleteEducación(id);
+    
+      @DeleteMapping("/Educacion/{id}")
+    public void deleteEducación (@PathVariable Long id ){
+         EducaciónService.deleteEducación(id);
     }
     
      @PostMapping("/Proyecto/{id}")
@@ -134,6 +139,7 @@ public class Controller {
     }
     
     @GetMapping("/Proyecto/{id}")
+      @ResponseBody
     public Proyecto findProyecto(@PathVariable Long id){
         return ProyectoService.findProyecto(id);
     }
@@ -147,12 +153,13 @@ public class Controller {
         return ProyectoService.deleteProyecto(id);
     }
     
-    @PostMapping("/Skill/{id}")
+    @PostMapping("/Skill")
     public void saveSkill (@RequestBody Skill info){
         SkillService.saveSkill(info);     
     }
     
     @GetMapping("/Skill/{id}")
+      @ResponseBody
     public Skill findSkill(@PathVariable Long id){
         return SkillService.findSkill(id);
     }

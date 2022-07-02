@@ -1,14 +1,21 @@
+<div  class="columna2">
+<span style="display: flex;justify-content: space-between;align-items: center;">
+  <p style="padding: 10px;" class="subtitulo"> Educación </p><app-button (btnClick)="toggleAddTask()"  
+    text="{{ showAddTask ? 'close': 'Agregar una nueva educación'}}"><i class="fa-solid fa-plus"></i></app-button>
+    
+</span>
+
+
 <div id="educacion">
     <!-- Modal -->
     <div  id="educacionForm" tabindex="-1" aria-labelledby="educacionFormLabel" aria-hidden="true">
       <div >
         <div >
-          <div >
-            <h5 id="educacionFormLabel">Educacion</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
+        
           <div class="modal-body">
-            <form [formGroup]="educacionForm" (ngSubmit)="onSubmit()">
+      
+            
+            <form *ngIf="showAddTask" [formGroup]="educacionForm" (ngSubmit)="onSubmit()">
               <input type="hidden" name="id" formControlName="id">
   
               <div class="form-group">
@@ -21,13 +28,13 @@
               <div >
                 <label for="año_ingreso" >Año de ingreso</label>
                 <div >
-                  <input type="date" name="año de ingreso" formControlName="año_ingreso" class="form-control" required>
+                  <input type="date" name="año de ingreso" formControlName="ano_ingreso" class="form-control" required>
                 </div>
               </div>
               <div >
                 <label for="año_egreso" >Año de egreso</label>
                 <div >
-                  <input type="date" name="año de egreso" formControlName="año_egreso" class="form-control" required>
+                  <input type="date" name="año de egreso" formControlName="ano_egreso" class="form-control" required>
                 </div>
               </div>
   
@@ -45,10 +52,17 @@
                 </div>
               </div>
   
+              <div>
+                <label for="img">imagen</label>
+                <div>
+                  <input type="text" name="img" formControlName="img" class="form-control" required>
+                </div>
+              </div>
   
+
+
               <div >
-                <button type="button"  data-bs-dismiss="modal">Close</button>
-                <button type="submit">Save changes</button>
+                <button type="submit"><span *ngIf="isEdicion">Editar</span><span *ngIf="!isEdicion">Agregar</span></button>
               </div>
             </form>
           </div>
@@ -59,41 +73,33 @@
 
 
 
-    <div class="columna2">
-      <span style="display: flex;justify-content: space-between;align-items: center;">
-          <p style="padding: 10px;" class="subtitulo"> Educación </p><span class="icon-plus"></span>
-      </span>
-      <div *ngIf="isUserLogged" class="btn-edit">
-        <button class="btn btn-right" data-bs-toggle="modal" data-bs-target="#educationForm" (click)="onNewEducation()"><i class="fa fa-plus"></i></button>
-      </div>
+    <div>
+  
       <div>
-        <ul class="items-list" id="eduList">
+        <ul  id="eduList">
           <li *ngFor="let educacion of educacionList; let i = index">
-            <div class="data-container">
-              <a href="#">
-                <div class="logo-image-container"><img id="edu-img" class="logo-image"
-                    src="/assets/images/{{educacion.img}}"></div>
-                <div class="list-info">
-                  <div>
-                    <h3 id="edu-establecimiento">{{ educacion.establecimiento}} </h3>
-                    <p><span id="edu-nombre_titulo">{{ educacion.nombre_titulo }}</span>, <span id="edu-nivel">{{ educacion.nivel}}</span>,
-                      
+            <div class="listafoto">
+              <div *ngIf="isUserLogged" style="display:flex ; justify-content:space-around">
+             <img id="edu-img" class="fotopequeña" src="{{educacion.img || 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png'}}">
+               
+                    <h3 class="subtitulo2"  id="edu-establecimiento">{{ educacion.establecimiento}} </h3> 
+                    <div>
+                      <button  data-bs-toggle="modal" data-bs-target="#educationForm" (click)="onEditEducacion(i)">editacion<i class="fa fa-pen"></i></button>
+                      <button (click)="onDeleteEducacion(i)">borracion<i class="fa fa-trash"></i></button>
+                    </div>
+                  </div> 
+                   <div>
+                    <p><span  class="textocolumna" id="edu-nombre_titulo">{{ educacion.nombre_titulo }}</span> <span id="edu-nivel">({{ educacion.nivel}})</span>
                     </p>
                     <p><span id="edu-start">{{ educacion.ano_ingreso }}</span> - <span id="edu-año_egreso">{{ educacion.ano_egreso}}</span></p>
                   </div>
-                </div>
-              </a>
-            </div>
-            <div *ngIf="isUserLogged" class="data-control">
-              <div class="btn-edit">
-                <button class="btn btn-right" data-bs-toggle="modal" data-bs-target="#educationForm" (click)="onEditEducation(i)"><i class="fa fa-pen"></i></button>
-              </div>
-              <div class="btn-edit">
-                <button class="btn btn-right" (click)="onDeleteEducation(i)"><i class="fa fa-trash"></i></button>
-              </div>
+               
+           
             </div>
           </li>
         </ul>
       </div>
 
       </div> 
+    </div>
+    </div>

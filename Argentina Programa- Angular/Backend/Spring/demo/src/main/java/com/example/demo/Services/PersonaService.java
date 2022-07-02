@@ -4,7 +4,7 @@
  */
 package com.example.demo.Services;
 
-import com.example.demo.Controller.PasswordEncoder;
+
 import com.example.demo.models.Persona;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +22,9 @@ public class PersonaService {
    
     IPersonaRepository iPersonaRepository;
       
-    @Autowired
-    PasswordEncoder passwordEncoder;
-    public void registerUser(Persona p ) throws Exception{
-           List<Persona> personas = iPersonaRepository.findByEmailAndIsEnabledTrue(p.getCorreo());
-        if (!personas.isEmpty()) {
-            throw new Exception("El email ya está registrado.");
-        } else {
-            
-            p.setEnabled(true);
-            iPersonaRepository.save(p);
-        }
-    }
+  
+  
+    
     
     public List<Persona> getUsers(){
         return (List<Persona>) iPersonaRepository.findAll();

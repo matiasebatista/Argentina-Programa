@@ -5,6 +5,7 @@
 package com.example.demo.models;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
@@ -40,13 +41,17 @@ public class Educación implements Serializable{
     @Column(name = "establecimiento")
     private String establecimiento;
     @Column(name = "ano_ingreso")
-    private Date AñoIngreso;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date ano_ingreso;
     @Column(name = "ano_egreso")
-    private Date AñoEgreso;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date ano_egreso;
     @Column(name = "nombre_titulo")
     private String nombre_titulo;
     @Column (name="nivel")
     private String nivel; 
     @Column(name = "Persona_id")
-    private Long persona;     
+    private Long persona;   
+    @Column(name="img")
+    private String img;
 }

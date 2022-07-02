@@ -56,3 +56,19 @@
             </div>
        
             </div>
+        
+
+            
+    <div>
+        <div>
+          <ul  id="proyectoList">
+            <li  *ngFor="let proyecto of proyectoList; let i = index">
+                <div style="display:flex;justify-content:space-between">
+              <h3 class="subtitulo2" id="exp-nombre_empresa">{{ proyecto.nombre }} </h3>
+              <p>{{proyecto.Ano}}</p>
+            </div>
+            <p>{{proyecto.descripcion_proy}}</p>
+            </li>
+          </ul>
+         
+  </div>

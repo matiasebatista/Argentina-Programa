@@ -1,0 +1,21 @@
+* {
+width: 30vw;
+}
+
+.centro {
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+
+header{
+background-color: blue;
+padding: 10px;
+
+}
+
+h1,h4 {
+color: aliceblue;
+
+}

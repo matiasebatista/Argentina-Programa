@@ -1,6 +1,6 @@
 export interface Educacion {
     id:number,
-    Persona_id:number,
+    persona:number,
     establecimiento:string,
     ano_egreso:Date,
     ano_ingreso:Date,

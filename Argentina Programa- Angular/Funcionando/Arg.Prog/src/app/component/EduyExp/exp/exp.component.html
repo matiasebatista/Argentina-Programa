@@ -1,65 +1,110 @@
+<div  class="columna1">
+    <div>
 
 
-
-            <div class="columna1">
-                <span style="display: flex;justify-content: space-between;align-items: center;">
-                    <p class="subtitulo"> Experiencia </p><span class="icon-plus"></span>
-                </span>
-                <div class="listafoto">
-
-
-                    <div style="display: flex;justify-content: space-between;align-items:flex-start;padding: 30px;">
-                        <div>
-                            <img class="fotopequeña" src="./imagenes/andrii-leonov-XNeW3Hr_XCM-unsplash.jpg"
-                                alt="imagen 1">
-                            <p class="subtitulo2"> Experiencia1 </p>
-                            <p class="textocolumna">Nunc vehicula enim at pulvinar pharetra. Pellentesque lobortis tincidunt aliquet.</p>
-                            <p class="textocolumna"> Donec felis diam, commodo eget erat eu, malesuada imperdiet felis.</p>
-                        </div>
-                        <div>
-                        <span style="width: auto;padding: 10px;"> <span class="icon-pencil"></span> </span>
-                        <span style="width: auto;padding: 10px;"> <span class="icon-bin"></span> </span>
+    <span style="display: flex;justify-content: space-between;align-items: center;">
+      <p style="padding: 10px;" class="subtitulo"> Experiencia </p><app-button (btnClick)="toggleAddTask2()"  
+        text="{{ showAddTask2 ? 'close': 'Agregar una nueva Experiencia'}}"><i class="fa-solid fa-plus"></i></app-button>
+        
+    </span>
+    
+    
+    <div id="experiencia">
+        <!-- Modal -->
+        <div  id="experienciaForm" tabindex="-1" aria-labelledby="experienciaFormLabel" aria-hidden="true">
+          <div >
+            <div >
+            
+              <div class="modal-body">
+          
+                
+                <form *ngIf="showAddTask2" [formGroup]="experienciaForm" (ngSubmit)="onSubmit()">
+                  <input type="hidden" name="id" formControlName="id">
+      
+                  <div class="form-group">
+                    <label class="subtitulo2" for="nombre_empresa">Nombre de la empresa</label>
+                    <div >
+                      <input type="text" name="nombre_empresa" formControlName="nombre_empresa" class="form-control" required>
                     </div>
+                  </div>
+      
+                  <div >
+                    <label for="fechainicio" >Fecha de inicio</label>
+                    <div >
+                      <input type="date" name="fechainicio" formControlName="fechainicio" class="form-control" required>
                     </div>
-                    <div style="display: flex;justify-content: space-between;align-items:flex-start;padding: 30px;">
-                        <div>
-                            <img class="fotopequeña" src="./imagenes/andrii-leonov-XNeW3Hr_XCM-unsplash.jpg"
-                                alt="imagen 1">
-                            <p class="subtitulo2"> Experiencia2 </p>
-                            <p class="textocolumna">Sed ornare velit tortor, non tincidunt ex feugiat ut.</p>
-                            <p class="textocolumna"> Donec felis diam, commodo eget erat eu, malesuada imperdiet felis.</p>
-                        </div>
-                        <div>
-                        <span style="width: auto;padding: 10px;"> <span class="icon-pencil"></span> </span>
-                        <span style="width: auto;padding: 10px;"> <span class="icon-bin"></span> </span>
+                  </div>
+                  <div >
+                    <label for="fechafin" >Fecha de finalizacion</label>
+                    <div >
+                      <input type="date" name="fechafin" formControlName="fechafin" class="form-control" required>
                     </div>
+                  </div>
+      
+                  <div>
+                    <label for="tipo_empleo">Tipo de empleo</label>
+                    <div>
+                      <input type="text" name="tipo_empleo" formControlName="tipo_empleo" class="form-control" required>
                     </div>
-                    <div style="display: flex;justify-content: space-between;align-items:flex-start;padding: 30px;">
-                        <div>
-                            <img class="fotopequeña" src="./imagenes/andrii-leonov-XNeW3Hr_XCM-unsplash.jpg"
-                                alt="imagen 1">
-                            <p class="subtitulo2"> Experiencia3 </p>
-                            <p class="textocolumna"> Mauris sit amet auctor enim, ac maximus turpis.</p>
-                            <p class="textocolumna"> Donec felis diam, commodo eget erat eu, malesuada imperdiet felis.</p>
-                        </div>
-                        <div>
-                        <span style="width: auto;padding: 10px;"> <span class="icon-pencil"></span> </span>
-                        <span style="width: auto;padding: 10px;"> <span class="icon-bin"></span> </span>
+                  </div>
+                  
+                  <div>
+                    <label for="descripcion">Descripcion</label>
+                    <div>
+                      <input type="text" name="descripcion" formControlName="descripcion" class="form-control" required>
                     </div>
+                  </div>
+      
+                  <div>
+                    <label for="es_trabajo_actual">Trabajo actual?</label>
+                    <div>
+                      <input type="text" name="es_trabajo_actual" formControlName="es_trabajo_actual" class="form-control" required>
                     </div>
-                    <div style="display: flex;justify-content: space-between;align-items:flex-start;padding: 30px;">
-                        <div>
-                            <img class="fotopequeña" src="./imagenes/andrii-leonov-XNeW3Hr_XCM-unsplash.jpg"
-                                alt="imagen 1">
-                            <p class="subtitulo2"> Experiencia4 </p>
-                            <p class="textocolumna">Phasellus purus libero, rhoncus sed laoreet id, ultrices a nulla.</p>
-                            <p class="textocolumna"> Donec felis diam, commodo eget erat eu, malesuada imperdiet felis.</p>
-                        </div>
-                        <div>
-                        <span style="width:auto;padding: 10px;"> <span class="icon-pencil"></span> </span>
-                        <span style="width: auto;padding: 10px;"> <span class="icon-bin"></span> </span>
-                    </div>
-                    </div>
-
-                </div>
+                  </div>
+      
+    
+                  <div >
+                    <button type="submit" (click)="onNewExpLaboral()">Agregar</button>
+                  </div>
+                </form>
+              </div>
             </div>
+          </div>
+        </div>
+      
+    
+    
+    
+        <div>
+          <div>
+            <ul  id="eduList">
+              <li *ngFor="let experiencia of experienciaList; let i = index">
+                <div class="listafoto">
+                 
+                    <div class="list-info">
+                      <div>
+                        <h3 class="subtitulo2"  id="exp-nombre_empresa">{{ experiencia.nombre_empresa }} </h3>
+                        <p class="subtitulo2">{{experiencia.es_trabajo_actual}</p>
+                        <p><span  class="textocolumna" id="edu-nombre_titulo">{{ experiencia.descripcion }}</span>, <span id="edu-nivel">{{ experiencia.tipo_empleo}}</span>,
+                        </p>
+                        <p><span id="exp-fechainicio">{{ experiencia.fechainicio }}</span><span id="exp-fechafin">{{ experiencia.fechafin}}</span></p>
+                      </div>
+                    </div>
+               
+                </div>
+                <div *ngIf="isUserLogged">
+                  <div >
+                    <button  data-bs-toggle="modal" data-bs-target="#educationForm" (click)="onEditExpLaboral(i)">aaa<i class="fa fa-pen"></i></button>
+                  </div>
+                  <div >
+                    <button (click)="onDeleteExpLaboral(i)">asdasa<i class="fa fa-trash"></i></button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+    
+          </div> 
+        </div>
+    </div>
+</div>

@@ -2,11 +2,11 @@ export interface Persona {
     id:number,
     nombre:string,
     apellido:string,
-    fecha_nacimiento:Date,
+    fecha_nac:Date,
     telefono:string,
     domicilio:string,
     acercade:string,
     correo:string,
     foto:string;
-    contraseña:string
+    contrasena:string
 }
