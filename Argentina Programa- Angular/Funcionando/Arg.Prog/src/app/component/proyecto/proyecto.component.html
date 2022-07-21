@@ -1,0 +1,76 @@
+<div  class="columna2">
+    <span style="display: flex;justify-content: space-between;align-items: center;">
+      <p style="padding: 10px;" class="subtitulo"> Proyectos </p><app-button (btnClick)="toggleAddTask4()"  
+        text="{{ showAddTask4 ? 'close': 'Agregar una nuevo proyecto'}}"><i class="fa-solid fa-plus"></i></app-button>
+    </span>
+
+<div>
+    <form *ngIf="showAddTask4" [formGroup]="proyectoForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <div >
+              <input type="text" name="nombre" formControlName="nombre" class="form-control" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="descripcion_proy">Descripcion</label>
+            <div >
+              <input type="text" name="descripcion_proy" formControlName="descripcion_proy" class="form-control" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="Ano">Año</label>
+            <div >
+              <input type="date" name="Ano" formControlName="Ano" class="form-control" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="link">Link</label>
+            <div >
+              <input type="text" name="link" formControlName="link" class="form-control" required>
+            </div>
+          </div>
+      
+          
+          <button type="submit"><span *ngIf="isEdicion4">Editar</span><span *ngIf="!isEdicion4">Agregar</span></button> 
+
+    </form>
+   
+
+</div>
+<div>
+    <ul  id="proyectoList">
+      <li *ngFor="let proyecto of proyectoList; let i = index">
+      
+          <div *ngIf="isUserLogged" style="display:flex ; justify-content:space-between">
+       
+           
+                <h3 class="subtitulo2"  id="proy-nombre">{{ proyecto.nombre }} ({{ proyecto.Ano}})</h3> 
+                <div *ngIf="!showAddTask4">
+                  <fa-icon [icon]="faPencil" (click)="onEditProyecto(i)" style="margin:20px"></fa-icon>
+                  <fa-icon [icon]="faTrash" (click)="onDeleteProyecto(i)" ></fa-icon>
+                </div>
+              </div> 
+               <div style="display:flex;">
+                
+                    <div  class="textocolumna" id="proy-desc">{{ proyecto.descripcion_proy }}
+
+                    </div> 
+                    <div *ngIf="proyecto.link != null" id="proy-link">({{ proyecto.link}})
+
+                    </div>
+                
+               
+              </div>
+           
+       
+   
+      </li>
+    </ul>
+  </div>
+
+</div>
+  

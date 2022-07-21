@@ -6,8 +6,7 @@
 
 
 
-
-
+<div >
  <div *ngIf="isUserLogged" style="display:flex;justify-content:space-evenly;flex-wrap: wrap;">
     
         <div>
@@ -17,6 +16,10 @@
             <p style="font-weight:600;font-size:150%;">Nombre y Apellido</p>
             <p style="font-weight:300;font-size:100%;">{{persona.nombre}}  {{persona.apellido}}</p>
         </div>
+        <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
+          <p style="font-weight:600;font-size:150%;">Fecha de Nacimiento</p>
+          <p style="font-weight:300;font-size:100%;">{{persona.fecha}}</p>
+  </div>
     <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
             <p style="font-weight:600;font-size:150%;">Teléfono</p>
             <p style="font-weight:300;font-size:100%;">{{persona.telefono}}</p>
@@ -34,11 +37,11 @@
 
 <div>
   <div style="display: flex;justify-content: space-between;align-items:center;">
-      <p style="padding: 10px;" class="subtitulo"> Acerca de: </p><span style="padding-right: 40px;"class="icon-pencil">(click)="onEditUser"</span>
+      <p style="padding: 10px;" class="subtitulo"> Acerca de: </p><button style="padding-right: 40px;"class="icon-pencil"> aaaaaa</button>
   </div>
    <p>{{persona.acercade}}</p>
 </div> 
-
+</div>
 
 
 <div id="persona" >
@@ -48,7 +51,7 @@
       <div >
       
         <div class="modal-body">
-          <form [formGroup]="personaForm">
+          <form [formGroup]="personaForm" *ngIf="isEdicion5 == true" [formGroup]="personaForm" (ngSubmit)="onEditUser(this.idUser)">
 
             <div class="form-group">
               <label for="nombre">Nombre</label>
@@ -58,9 +61,9 @@
             </div>
 
             <div >
-              <label for="fecha_nac" >Fecha de Nacimiento </label>
+              <label for="fecha" >Fecha de Nacimiento </label>
               <div >
-                <input type="date" name="fecha_nac" formControlName="fecha_nac" class="form-control" required>
+                <input type="date" name="fecha" formControlName="fecha" class="form-control" required>
               </div>
             </div>
             <div >

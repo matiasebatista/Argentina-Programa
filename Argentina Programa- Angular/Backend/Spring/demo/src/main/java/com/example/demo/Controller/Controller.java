@@ -73,10 +73,7 @@ public class Controller {
         return PersonaService.findUser(id);
     }
     
-    @PutMapping("/personas/{id}")
-    public Persona editUser(@PathVariable Long id, @RequestBody Persona pers){
-        return PersonaService.editUser(id,pers);
-    }
+
     
     @PostMapping("/personas/login")
     
@@ -96,24 +93,25 @@ public class Controller {
     }
 
     
-     @PostMapping("/ExpLaboral")
-    public void saveExpLaboral (@RequestBody ExpLaboral info){
-        ExpLaboralService.saveExpLaboral(info);     
+      @PutMapping("/personas")
+    public void editUser(@RequestBody Persona pers){
+         PersonaService.editUser(pers);
     }
     
-    @GetMapping("/ExpLaboral/{id}")
+    @GetMapping("/ExpLaboral/{persona}")
       @ResponseBody
-    public ExpLaboral findExpLaboral(@PathVariable Long id){
-        return ExpLaboralService.findExpLaboral(id);
+    public List<ExpLaboral> findExpLaboral(@PathVariable Long persona){
+        return ExpLaboralService.findExpLaboral(persona);
     }
     
-    @PutMapping("/ExpLaboral/{id}")
-    public ExpLaboral editExpLaboral(@PathVariable Long id, @RequestBody ExpLaboral info){
-        return ExpLaboralService.editExpLaboral(id,info);
+    @RequestMapping(value="/ExpLaboral",method={RequestMethod.POST,RequestMethod.PUT})
+    public void saveExpLaboral(@RequestBody ExpLaboral info){
+        ExpLaboralService.saveExpLaboral(info);
     }
+    
       @DeleteMapping("/ExpLaboral/{id}")
-    public String deleteExpLaboral(@PathVariable Long id ){
-        return ExpLaboralService.deleteExpLaboral(id);
+    public void deleteExpLaboral(@PathVariable Long id ){
+         ExpLaboralService.deleteExpLaboral(id);
     }
     
    @RequestMapping(value="/Educacion",method={RequestMethod.POST,RequestMethod.PUT})
@@ -127,50 +125,46 @@ public class Controller {
         return EducaciónService.findEducación(Persona_id);
     }
     
-    
       @DeleteMapping("/Educacion/{id}")
     public void deleteEducación (@PathVariable Long id ){
          EducaciónService.deleteEducación(id);
     }
     
-     @PostMapping("/Proyecto/{id}")
-    public void saveProyecto (@RequestBody Proyecto info){
+    @RequestMapping(value="/Proyecto",method={RequestMethod.POST,RequestMethod.PUT})
+    public void saveProyecto(@RequestBody Proyecto info){
         ProyectoService.saveProyecto(info);     
     }
     
-    @GetMapping("/Proyecto/{id}")
+    @GetMapping("/Proyecto/{persona}")
       @ResponseBody
-    public Proyecto findProyecto(@PathVariable Long id){
-        return ProyectoService.findProyecto(id);
+    public List<Proyecto> findProyecto(@PathVariable Long persona){
+        return ProyectoService.findProyecto(persona);
     }
     
-    @PutMapping("/Proyecto/{id}")
-    public Proyecto editProyecto(@PathVariable Long id, @RequestBody Proyecto info){
-        return ProyectoService.editProyecto(id,info);
-    }
+   
       @DeleteMapping("/Proyecto/{id}")
-    public String deleteProyecto (@PathVariable Long id ){
-        return ProyectoService.deleteProyecto(id);
+    public void deleteProyecto (@PathVariable Long id ){
+        ProyectoService.deleteProyecto(id);
     }
     
-    @PostMapping("/Skill")
-    public void saveSkill (@RequestBody Skill info){
+
+    
+    @GetMapping("/Skill/{persona}")
+      @ResponseBody
+    public List<Skill> findSkill(@PathVariable Long persona){
+        return SkillService.findSkill(persona);
+    }
+    
+
+        @RequestMapping(value="/Skill",method={RequestMethod.POST,RequestMethod.PUT})
+    public void saveSkill(@RequestBody Skill info){
         SkillService.saveSkill(info);     
     }
     
-    @GetMapping("/Skill/{id}")
-      @ResponseBody
-    public Skill findSkill(@PathVariable Long id){
-        return SkillService.findSkill(id);
-    }
     
-    @PutMapping("/Skill/{id}")
-    public Skill editProyecto(@PathVariable Long id, @RequestBody Skill info){
-        return SkillService.editSkill(id,info);
-    }
       @DeleteMapping("/Skill/{id}")
-    public String deleteSkill (@PathVariable Long id ){
-        return SkillService.deleteSkill(id);
+    public void deleteSkill (@PathVariable Long id ){
+         SkillService.deleteSkill(id);
     }
     
 }

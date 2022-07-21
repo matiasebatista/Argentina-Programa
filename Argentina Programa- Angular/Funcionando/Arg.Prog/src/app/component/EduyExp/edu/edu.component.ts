@@ -5,6 +5,7 @@ import { PortfolioService } from 'src/app/service/portfolio.service';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { faTrash,faPencil,faXmark, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-edu',
@@ -18,6 +19,10 @@ export class EduComponent implements OnInit {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   });
+  faPlus = faPlus;
+  faTrash = faTrash;
+  faPencil = faPencil;
+  faXmark = faXmark;
   @Output() btnClick = new EventEmitter();
   showAddTask:boolean = false;
   educacionList: Educacion[] = [];
@@ -26,7 +31,7 @@ export class EduComponent implements OnInit {
   subscription?: Subscription;
   editForm: any;
   idUser: number;
-  isEdicion:boolean ;
+  isEdicion:boolean;
 
   constructor(   private portfolioService: PortfolioService,
     private autenticacionService: AutenticacionService,
@@ -103,14 +108,14 @@ export class EduComponent implements OnInit {
     }
     
     onNewEducacion() {
-      this.isEdicion=false
+    this.isEdicion=false;
     this.clearForm();
     this.portfolioService.toggleAddTask();
     } 
 
-    onEditEducacion(i: number) {
+    onEditEducacion(index: number) {
      this.isEdicion = true;
-      let educacion: Educacion = this.educacionList[i];
+      let educacion: Educacion = this.educacionList[index];
       this.portfolioService.toggleAddTask();
       this.loadForm(educacion);
      
@@ -132,7 +137,9 @@ export class EduComponent implements OnInit {
        
       }
   
-      
+      onClick(){
+        this.btnClick.emit();
+      }
 
 
 

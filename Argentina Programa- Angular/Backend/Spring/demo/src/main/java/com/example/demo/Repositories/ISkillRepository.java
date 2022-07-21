@@ -6,6 +6,7 @@
 package com.example.demo.Repositories;
 
 import com.example.demo.models.Skill;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +16,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ISkillRepository extends CrudRepository<Skill,Long>{
+
+    public List<Skill> findByPersona(Long id);
     
 }

@@ -1,6 +1,6 @@
 export interface Skill {
     id:number,
-    Nombre:string,
+    nombre:string,
     porcentaje:number,
-    Persona_id:number,
+    persona:number,
 }

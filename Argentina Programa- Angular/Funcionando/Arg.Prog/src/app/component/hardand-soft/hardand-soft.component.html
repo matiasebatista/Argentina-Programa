@@ -1,19 +1,21 @@
 <div>
     <span style="display: flex;justify-content: space-between;align-items: center;">
         <p style="padding-left: 30px;" class="subtitulo"> Hard and soft skills</p><span style="padding-right: 40px;" class="icon-plus"></span>
+        <app-button (btnClick)="toggleAddTask3()"  
+    text="{{ showAddTask3 ? 'close': 'Agregar una nueva Habilidad'}}"><i class="fa-solid fa-plus"></i></app-button>
     </span> 
     <div id="skill">
-      <div  id="skillForm" tabindex="-1" aria-labelledby="educacionFormLabel" aria-hidden="true">
+      <div  id="skillForm" tabindex="-1" aria-labelledby="skillFormLabel" aria-hidden="true">
         <div >
           <div >
     
-            <form [formGroup]="skillForm" (ngSubmit)="onSubmit()">
+            <form *ngIf="showAddTask3" [formGroup]="skillForm" (ngSubmit)="onSubmit()">
             
               <input type="hidden" name="id" formControlName="id">
               <div class="form-group">
                 <label for="Nombre">Habilidad</label>
                 <div >
-                  <input type="text" name="Nombre" formControlName="Nombre" class="form-control" required>
+                  <input type="text" name="nombre" formControlName="nombre" class="form-control" required>
                 </div>
               </div>
             
@@ -21,10 +23,11 @@
                   <div class="form-group">
                     <label for="porcentaje">Porcentaje</label>
                     <div >
-                      <input type="text" name="porcentaje" formControlName="porcentaje" class="form-control" required>
+                      <input type="number" name="porcentaje" formControlName="porcentaje" class="form-control" required>
                     </div>
+                    
                   </div>
-            
+                  <button type="submit"><span *ngIf="isEdicion3">Editar</span><span *ngIf="!isEdicion3">Agregar</span></button>
       
             
             </form>
@@ -32,24 +35,22 @@
     </div>
     </div>
     </div>
-
-
-
     <div>
       <div>
-        <ul  id="eduList">
+        <ul  id="skillList"  style="list-style: none;">
           <li *ngFor="let skill of skillList; let i = index">
-            <h3 class="subtitulo2" id="exp-nombre_empresa">{{ skill.Nombre }} </h3>
+            <div style="display:flex;justify-content: center;align-items: center;flex-direction: column;">
+            <div style="justify-content:center ;">
+              <p class="subtitulo2" id="Nombre"> {{ skill.nombre }} ({{skill.porcentaje}}%) <span> <fa-icon [icon]="faPencil"  (click)="onEditSkill(i)"  ></fa-icon>
+                <fa-icon [icon]="faTrash" (click)="onDeleteSkill(i)" style="margin:20px"  ></fa-icon> </span> </p>
+              
+            </div>
+            <progress id="file" min="0" max="100" value="{{skill.porcentaje}}" style="width: 100%;height: 30px;"> {{skill.porcentaje}} </progress>
+            </div>
+           
           </li>
         </ul>
        
 </div>
+</div>
 
-
-
-    <div style="display:flex;justify-content: center;">
-    <p class="subtitulo2">Progreso1</p>
-    </div>
-    <div id="progressbar">
-        <div></div>
-      </div>

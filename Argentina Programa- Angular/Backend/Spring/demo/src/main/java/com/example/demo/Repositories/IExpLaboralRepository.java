@@ -5,6 +5,7 @@
 package com.example.demo.Repositories;
 
 import com.example.demo.models.ExpLaboral;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,5 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface IExpLaboralRepository extends CrudRepository<ExpLaboral,Long> {
-    
+    public List<ExpLaboral> findByPersona(Long id);
 }

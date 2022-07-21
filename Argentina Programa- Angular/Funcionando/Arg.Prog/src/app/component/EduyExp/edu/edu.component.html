@@ -1,8 +1,8 @@
 <div  class="columna2">
 <span style="display: flex;justify-content: space-between;align-items: center;">
-  <p style="padding: 10px;" class="subtitulo"> Educación </p><app-button (btnClick)="toggleAddTask()"  
-    text="{{ showAddTask ? 'close': 'Agregar una nueva educación'}}"><i class="fa-solid fa-plus"></i></app-button>
-    
+  <p style="padding: 10px;" class="subtitulo"> Educación </p><app-button (btnClick)="toggleAddTask()"  style="margin:20px"
+    text="{{ showAddTask ? 'close': 'Agregar una nueva educación'}}"></app-button>
+   
 </span>
 
 
@@ -16,8 +16,7 @@
       
             
             <form *ngIf="showAddTask" [formGroup]="educacionForm" (ngSubmit)="onSubmit()">
-              <input type="hidden" name="id" formControlName="id">
-  
+            
               <div class="form-group">
                 <label for="establecimiento">Establecimiento</label>
                 <div >
@@ -83,15 +82,15 @@
              <img id="edu-img" class="fotopequeña" src="{{educacion.img || 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png'}}">
                
                     <h3 class="subtitulo2"  id="edu-establecimiento">{{ educacion.establecimiento}} </h3> 
-                    <div>
-                      <button  data-bs-toggle="modal" data-bs-target="#educationForm" (click)="onEditEducacion(i)">editacion<i class="fa fa-pen"></i></button>
-                      <button (click)="onDeleteEducacion(i)">borracion<i class="fa fa-trash"></i></button>
+                    <div  *ngIf="!showAddTask" >
+                      <fa-icon [icon]="faPencil" (click)="onEditEducacion(i)" style="margin:20px"></fa-icon>
+                      <fa-icon [icon]="faTrash" (click)="onDeleteEducacion(i)" ></fa-icon>
                     </div>
                   </div> 
                    <div>
                     <p><span  class="textocolumna" id="edu-nombre_titulo">{{ educacion.nombre_titulo }}</span> <span id="edu-nivel">({{ educacion.nivel}})</span>
                     </p>
-                    <p><span id="edu-start">{{ educacion.ano_ingreso }}</span> - <span id="edu-año_egreso">{{ educacion.ano_egreso}}</span></p>
+                    <p><span id="edu-start">{{ educacion.ano_ingreso }}</span> - <span id="edu-año_egreso" *ngIf="educacion.ano_egreso !=null">{{ educacion.ano_egreso}}</span> <span id="edu-año_egreso" *ngIf="educacion.ano_egreso==null">Actualidad</span></p>
                   </div>
                
            

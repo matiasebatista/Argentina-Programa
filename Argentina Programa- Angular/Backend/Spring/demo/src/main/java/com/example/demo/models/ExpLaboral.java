@@ -4,6 +4,7 @@
  */
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
@@ -34,14 +35,14 @@ public class ExpLaboral implements Serializable{
         @Column(name = "id")
         private Long id;
         @Column(name = "nombre_empresa")
-        private String nombre;
+        private String nombre_empresa;
         @Column(name = "es_trabajo_actual")
-        private Integer esTrabajoActual;
+        private String es_trabajo_actual;
         @Column(name = "fechainicio")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @JsonFormat(pattern = "yyyy-MM-dd")
         private Date fechainicio;
         @Column(name = "fechafin")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @JsonFormat(pattern = "yyyy-MM-dd")
         private Date fechafin;
         @Column(name = "descripcion")
         private String descripcion;

@@ -3,7 +3,7 @@
 
 
     <span style="display: flex;justify-content: space-between;align-items: center;">
-      <p style="padding: 10px;" class="subtitulo"> Experiencia </p><app-button (btnClick)="toggleAddTask2()"  
+      <p style="padding: 10px;" class="subtitulo"> Experiencia </p><app-button (btnClick)="toggleAddTask2()"  style="margin:20px"
         text="{{ showAddTask2 ? 'close': 'Agregar una nueva Experiencia'}}"><i class="fa-solid fa-plus"></i></app-button>
         
     </span>
@@ -64,7 +64,7 @@
       
     
                   <div >
-                    <button type="submit" (click)="onNewExpLaboral()">Agregar</button>
+                    <button type="submit"><span *ngIf="isEdicion2">Editar</span><span *ngIf="!isEdicion2">Agregar</span></button>
                   </div>
                 </form>
               </div>
@@ -73,32 +73,29 @@
         </div>
       
     
+        
     
-    
-        <div>
+        <div *ngIf="isUserLogged">
           <div>
-            <ul  id="eduList">
+            <ul  id="expList">
               <li *ngFor="let experiencia of experienciaList; let i = index">
                 <div class="listafoto">
-                 
-                    <div class="list-info">
-                      <div>
+                    <div>
+                      <div style="display:flex ; justify-content:space-between">
                         <h3 class="subtitulo2"  id="exp-nombre_empresa">{{ experiencia.nombre_empresa }} </h3>
-                        <p class="subtitulo2">{{experiencia.es_trabajo_actual}</p>
+                        <div *ngIf="!showAddTask2">
+                          <fa-icon [icon]="faPencil" (click)="onEditExpLaboral(i)"  ></fa-icon>
+                          <fa-icon [icon]="faTrash" (click)="onDeleteExpLaboral(i)" style="margin:20px"  ></fa-icon>
+                        </div>
+                      </div>
+                        <p class="subtitulo2">{{experiencia.es_trabajo_actual}}</p>
                         <p><span  class="textocolumna" id="edu-nombre_titulo">{{ experiencia.descripcion }}</span>, <span id="edu-nivel">{{ experiencia.tipo_empleo}}</span>,
                         </p>
-                        <p><span id="exp-fechainicio">{{ experiencia.fechainicio }}</span><span id="exp-fechafin">{{ experiencia.fechafin}}</span></p>
-                      </div>
-                    </div>
-               
+                        <p><span id="exp-fechainicio">{{ experiencia.fechainicio }}</span>   /   <span id="exp-fechafin">{{ experiencia.fechafin}}</span></p>
+                      </div>       
                 </div>
-                <div *ngIf="isUserLogged">
-                  <div >
-                    <button  data-bs-toggle="modal" data-bs-target="#educationForm" (click)="onEditExpLaboral(i)">aaa<i class="fa fa-pen"></i></button>
-                  </div>
-                  <div >
-                    <button (click)="onDeleteExpLaboral(i)">asdasa<i class="fa fa-trash"></i></button>
-                  </div>
+                <div >
+            
                 </div>
               </li>
             </ul>

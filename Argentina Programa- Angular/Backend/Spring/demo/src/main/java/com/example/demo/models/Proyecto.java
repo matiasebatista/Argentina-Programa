@@ -4,7 +4,9 @@
  */
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,13 +34,16 @@ public class Proyecto implements Serializable{
       @Column(name = "id")
     private Long id;
     @Column(name = "nombre")
-    private String Nombre; 
+    private String nombre; 
     @Column(name = "descripcion_proy")
     private String descripcion_proy;
     @Column(name = "Ano")
-    private String año_proy;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date Ano;
     @Column(name = "Persona_id")
     private Long persona; 
+    @Column (name = "link")
+    private String link;
     
     
 }

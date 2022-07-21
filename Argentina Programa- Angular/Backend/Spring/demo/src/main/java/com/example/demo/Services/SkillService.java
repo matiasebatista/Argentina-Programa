@@ -6,6 +6,7 @@ package com.example.demo.Services;
 
 import com.example.demo.Repositories.ISkillRepository;
 import com.example.demo.models.Skill;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,28 +23,16 @@ public class SkillService  {
         iSkillRepository.save(info);
     }
     
-     public Skill findSkill(Long id){
-        Skill info = iSkillRepository.findById(id).orElse(null);
-        return info;
+     public List<Skill> findSkill(Long id){
+        return iSkillRepository.findByPersona(id);
     }
      
-     public Skill editSkill(Long id,Skill info){
-        try{
-            info.setId(id);
+     public void editSkill(Long id,Skill info){
             iSkillRepository.save(info);
-            return info;
-        }catch(Exception e){
-            return null;
-        }
     }
      
-      public String deleteSkill(Long id){
-        try{
-            iSkillRepository.deleteById(id);
-            return "Esta información fue borrada";
-        }catch(Exception e){
-            return "No se pudo borrar la información";
-        }     
+      public void deleteSkill(Long id){
+         iSkillRepository.deleteById(id);     
     }
     
     

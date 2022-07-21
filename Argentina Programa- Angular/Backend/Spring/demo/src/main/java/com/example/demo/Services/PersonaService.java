@@ -50,14 +50,10 @@ public class PersonaService {
         return null;
     }
   
-    public Persona editUser(Long id,Persona p){
-        try{
-            p.setId(id);
-            iPersonaRepository.save(p);
-            return p;
-        }catch(Exception e){
-            return null;
-        }
+    public void editUser(Persona info){
+            iPersonaRepository.save(info);
+      
+      
     }
         
     public String findAcercade(Long id){

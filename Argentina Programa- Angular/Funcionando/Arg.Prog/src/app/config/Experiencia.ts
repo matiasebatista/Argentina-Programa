@@ -5,6 +5,6 @@ export interface Experiencia {
     fechafin:Date,
     descripcion:string,
     tipo_empleo:string,
-    Persona_id:number,
+    persona:number,
     es_trabajo_actual:string
 }

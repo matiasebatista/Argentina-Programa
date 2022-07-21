@@ -5,6 +5,7 @@ import { PortfolioService } from 'src/app/service/portfolio.service';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { faTrash,faPencil,faXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-exp',
@@ -12,19 +13,25 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./exp.component.css']
 })
 export class ExpComponent implements OnInit {
+  faTrash = faTrash;
+  faXmark = faXmark;
+  faPencil = faPencil;
+  @Output() btnClick = new EventEmitter();
   showAddTask2:boolean = false;
   experienciaList: Experiencia[] = [];
   isUserLogged: Boolean = false ;
   experienciaForm: FormGroup;
-  subscription?: Subscription;
-  @Output() btnClick = new EventEmitter();
+  subscription2?: Subscription;
   editForm: any;
+  idUser: number;
+  isEdicion2:boolean;
   constructor(private portfolioService: PortfolioService,
     private autenticacionService: AutenticacionService,
     private formBuilder: FormBuilder) {
-      this.subscription = this.portfolioService.onToggle2().subscribe(value => this.showAddTask2 = value);
+      this.subscription2 = this.portfolioService.onToggle2().subscribe(value => this.showAddTask2 = value);
       this.experienciaList = this.autenticacionService.UsuarioAutenticado?.experiencia || [];
-
+      this.idUser = this.autenticacionService.idUser();
+      this.isEdicion2 = false;
       this.experienciaForm=this.formBuilder.group({
         id:[''],
         nombre_empresa:['',[Validators.required]],
@@ -32,8 +39,8 @@ export class ExpComponent implements OnInit {
         fechafin:['',[Validators.required]],
         descripcion:['',[Validators.required]],
         tipo_empleo:['',[Validators.required]],
-        Persona_id:[''],
-        es_trabajo_actual:[""]
+        persona:[this.idUser],
+        es_trabajo_actual:['']
       })
      }
 
@@ -42,7 +49,7 @@ export class ExpComponent implements OnInit {
     this.reloadData();
   }
   private reloadData(){
-    this.portfolioService.findExpLaboral().subscribe((data)=>{
+    this.portfolioService.findExpLaboral(this.idUser).subscribe((data)=>{
       this.experienciaList= data;
     });
 }
@@ -55,14 +62,14 @@ private clearForm(){
     fechafin:'',
     descripcion:'',
     tipo_empleo:'',
-    Persona_id:'',
+    persona:this.idUser,
     es_trabajo_actual:''
   })
 }
 private loadForm(experiencia : Experiencia ){
   this.experienciaForm.setValue({
     id:experiencia.id,
-    Persona_id:experiencia.Persona_id,
+    persona:experiencia.persona,
     nombre_empresa:experiencia.nombre_empresa,
     fechafin:experiencia.fechafin,
     fechainicio:experiencia.fechainicio,
@@ -73,40 +80,39 @@ private loadForm(experiencia : Experiencia ){
   })
 }
 
-fillForm (experiencia:Experiencia){
-  this.editForm.controls.name.setValue(experiencia.nombre_empresa);
-  this.editForm.controls.name.setValue(experiencia.fechafin);
-  this.editForm.controls.name.setValue(experiencia.fechainicio);
-  this.editForm.controls.name.setValue(experiencia.tipo_empleo);
-  this.editForm.controls.name.setValue(experiencia.es_trabajo_actual);
-  this.editForm.controls.name.setValue(experiencia.descripcion);
-  this.editForm.updateValueAndValidity();
-}
+
 
 onSubmit(){
-  let experiencia = this.experienciaForm.value;
-  if(this.experienciaForm.get('id')?.value == ''){
+  let experiencia : Experiencia = this.experienciaForm.value;
+  if(!this.isEdicion2){
     this.portfolioService.saveExpLaboral(experiencia).subscribe(
-      (newExperiencia : Experiencia ) =>{
-        this.experienciaList.push(newExperiencia);
+      (newExperiencia : Experiencia) =>{
+       
+        this.reloadData();
       }
     );
   }else{
     this.portfolioService.editExpLaboral(experiencia).subscribe(
         () => {
+        
         this.reloadData();
         }
-    )
-    
+    ) 
   }
+  this.onNewExpLaboral()
 }
+
 onNewExpLaboral() {
+  this.isEdicion2=false
   this.clearForm();
+  this.portfolioService.toggleAddTask2();
   } 
 
   onEditExpLaboral(index: number) {
-    let experiencia: Experiencia = this.experienciaList[index];
-    this.fillForm(experiencia);
+    this.isEdicion2 = true;
+    let experiencia : Experiencia = this.experienciaList[index];
+    this.portfolioService.toggleAddTask2();
+    this.loadForm(experiencia);
   }
 
   onDeleteExpLaboral(index: number) {
@@ -121,7 +127,7 @@ onNewExpLaboral() {
   }
 
     toggleAddTask2(){
-      this.portfolioService.toggleAddTask2();
+      this.onNewExpLaboral() ;
     }
 
 }

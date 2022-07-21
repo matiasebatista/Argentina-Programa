@@ -5,6 +5,7 @@
 package com.example.demo.Repositories;
 
 import com.example.demo.models.Proyecto;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,5 +15,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface IProyectoRepository extends CrudRepository<Proyecto,Long> {
+
+    public List<Proyecto> findByPersona(Long id);
     
 }

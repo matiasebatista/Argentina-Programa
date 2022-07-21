@@ -2,7 +2,7 @@ export interface Persona {
     id:number,
     nombre:string,
     apellido:string,
-    fecha_nac:Date,
+    fecha:Date,
     telefono:string,
     domicilio:string,
     acercade:string,

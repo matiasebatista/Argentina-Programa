@@ -33,9 +33,9 @@ public class Skill implements Serializable {
     @Column(name = "id")
     private Long id;
     @Column(name = "Nombre")
-    private String Nombre;
+    private String nombre;
     @Column(name = "porcentaje")
-    private String Porcentaje;
+    private String porcentaje;
     @Column(name = "Persona_id")
     private Long persona; 
 }

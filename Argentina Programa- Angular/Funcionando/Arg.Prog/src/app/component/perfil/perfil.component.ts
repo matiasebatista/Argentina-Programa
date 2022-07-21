@@ -4,10 +4,9 @@ import { FormGroup, FormBuilder,Validators,Form } from '@angular/forms';
 import { PortfolioService } from 'src/app/service/portfolio.service';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
 import { CursorError } from '@angular/compiler/src/ml_parser/lexer';
-// interface Persona {
-//   nombre:string;
-//   apellido:string;
-// }
+import { faTrash,faPencil,faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-perfil',
@@ -20,23 +19,32 @@ export class PerfilComponent implements OnInit {
   persona: Persona;
   isUserLogged: Boolean ;
   personaForm: FormGroup;
-
-  
+  faTrash = faTrash;
+  faXmark = faXmark;
+  faPencil = faPencil;
+  idUser: number;
+  isEdicion5:boolean;
+  showAddTask5:boolean = false;
+  subscription5?: Subscription;
   constructor( private portfolioService: PortfolioService,
     private autenticacionService: AutenticacionService,
     private formBuilder: FormBuilder) { 
       this.persona = autenticacionService.UsuarioAutenticado;
       this.isUserLogged = autenticacionService.isUserLogged();
+      this.idUser = this.autenticacionService.idUser();
+      this.subscription5 = this.portfolioService.onToggle().subscribe(value => this.showAddTask5 = value);
+      this.isEdicion5 = true;
    this.personaForm =  this.formBuilder.group ({
-     nombre:[this.persona.nombre || ''],
-     apellido:[this.persona.apellido  ||  ''],
-     domicilio:[this.persona.domicilio  ||  ''],
-     correo:[this.persona.correo  ||  ''],
-     telefono:[this.persona.telefono ||  ''],
-     fecha_nac:[this.persona.fecha_nac ||  ''],
-     foto:[this.persona.foto ||  ''],
-     acercade:[this.persona.acercade  ||  ''],
-     contrasena:[this.persona.contrasena  ||  '']
+    id:[this.idUser],
+     nombre:[''],
+     apellido:[''],
+     domicilio:[''],
+     correo:[''],
+     telefono:[''],
+     fecha:[''],
+     foto:[''],
+     acercade:[''],
+     contrasena:['']
    })
   }
 
@@ -47,7 +55,7 @@ export class PerfilComponent implements OnInit {
   }
 
   private reloadData(){
-    this.portfolioService.findUser(this.persona.id).subscribe((data)=>{
+    this.portfolioService.findUser(this.idUser).subscribe((data)=>{
       this.persona= data;
     });
    
@@ -55,12 +63,13 @@ export class PerfilComponent implements OnInit {
 
 private loadForm(persona:Persona){
   this.personaForm.setValue({
+    id:this.idUser,
     nombre: persona.nombre,
     apellido:persona.apellido,
     domicilio:persona.domicilio,
     correo: persona.correo,
     telefono:persona.telefono,
-    fecha_nac:persona.fecha_nac,
+    fecha:persona.fecha,
     foto:persona.foto,
     acercade:persona.acercade,
     contrasena:persona.contrasena
@@ -68,9 +77,7 @@ private loadForm(persona:Persona){
 }
 
 onEditUser(index: number) {
-  let persona: Persona = this.persona;
-  this.loadForm(persona);
-
+  let persona:Persona = this.persona
+  this.loadForm(persona)
 }
-
 }
