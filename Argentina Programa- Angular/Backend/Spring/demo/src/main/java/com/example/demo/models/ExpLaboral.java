@@ -46,8 +46,6 @@ public class ExpLaboral implements Serializable{
         private Date fechafin;
         @Column(name = "descripcion")
         private String descripcion;
-        @Column(name="tipo_empleo")
-        private String tipo_empleo;
-        @Column(name = "Persona_id")
+      
          private Long persona;    
 }

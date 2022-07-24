@@ -7,51 +7,54 @@
 
 
 <div >
- <div *ngIf="isUserLogged" style="display:flex;justify-content:space-evenly;flex-wrap: wrap;">
-    
+ <div *ngIf="isUserLogged" style="background-color:lightblue">
+    <div  style="display:flex;justify-content:space-evenly;flex-wrap: wrap;">
         <div>
             <img  class="fotoperfil" src="{{persona.foto || 'https://cdn0.iconfinder.com/data/icons/communication-456/24/account_profile_user_contact_person_avatar_placeholder-512.png'}}">
         </div>
         <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
-            <p style="font-weight:600;font-size:150%;">Nombre y Apellido</p>
-            <p style="font-weight:300;font-size:100%;">{{persona.nombre}}  {{persona.apellido}}</p>
+            <p class="grande">Nombre y Apellido</p>
+            <p class="mediano">{{persona.nombre}}  {{persona.apellido}}</p>
         </div>
         <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
-          <p style="font-weight:600;font-size:150%;">Fecha de Nacimiento</p>
-          <p style="font-weight:300;font-size:100%;">{{persona.fecha}}</p>
+          <p class="grande">Fecha de Nacimiento</p>
+          <p class="mediano">{{persona.fecha}}</p>
   </div>
     <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
-            <p style="font-weight:600;font-size:150%;">Teléfono</p>
-            <p style="font-weight:300;font-size:100%;">{{persona.telefono}}</p>
+            <p class="grande">Teléfono</p>
+            <p class="mediano">{{persona.telefono}}</p>
     </div>
     <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
-            <p style="font-weight:600;font-size:150%;">Email</p>
-            <p style="font-weight:300;font-size:100%;">{{persona.correo}}</p>
+            <p class="grande">Email</p>
+            <p class="mediano">{{persona.correo}}</p>
     </div>
     <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
-    <p style="font-weight:600;font-size:150%;">Dirección</p>
-    <p style="font-weight:300;font-size:100%;">{{persona.domicilio}} </p>
+    <p class="grande">Dirección</p>
+    <p class="mediano">{{persona.domicilio}} </p>
    </div> 
 
 </div>
 
 <div>
   <div style="display: flex;justify-content: space-between;align-items:center;">
-      <p style="padding: 10px;" class="subtitulo"> Acerca de: </p><button style="padding-right: 40px;"class="icon-pencil"> aaaaaa</button>
+  <p style="padding: 10px;" class="subtitulo"> Acerca de: </p>
   </div>
+  <div style="display: flex;justify-content:space-between;">
    <p>{{persona.acercade}}</p>
+   <fa-icon [icon]="faPencil" (click)="onEditUser()" style="margin-top:20px;margin-right: 20px;" ></fa-icon>
+  </div>
 </div> 
 </div>
-
+</div>
 
 <div id="persona" >
   <!-- Modal -->
-  <div  id="personaForm" tabindex="-1" aria-labelledby="educacionFormLabel" aria-hidden="true">
+  <div  id="personaForm" tabindex="-1" aria-labelledby="personaFormLabel" aria-hidden="true">
     <div >
       <div >
       
         <div class="modal-body">
-          <form [formGroup]="personaForm" *ngIf="isEdicion5 == true" [formGroup]="personaForm" (ngSubmit)="onEditUser(this.idUser)">
+          <form [formGroup]="personaForm" *ngIf="isEdicion5 == true" [formGroup]="personaForm"  (ngSubmit)="onSubmit()" >
 
             <div class="form-group">
               <label for="nombre">Nombre</label>
@@ -102,9 +105,9 @@
             </div>
 
             <div [hidden]="true">
-              <label for="contrasena">Contraseña</label>
+              <label for="contrasña">Contraseña</label>
               <div>
-                <input type="text" name="Contraseña" formControlName="contrasena" class="form-control" required>
+                <input type="text" name="Contraseña" formControlName="contraseña" class="form-control" required>
               </div>
             </div>
 
@@ -114,7 +117,7 @@
                 <input type="text" name="Foto" formControlName="foto" class="form-control" required>
               </div>
             </div>
-
+            <button type="submit">Editar o cerrar</button>
 
           </form>
         </div>

@@ -10,18 +10,13 @@
     
     
     <div id="experiencia">
-        <!-- Modal -->
-        <div  id="experienciaForm" tabindex="-1" aria-labelledby="experienciaFormLabel" aria-hidden="true">
-          <div >
-            <div >
-            
-              <div class="modal-body">
-          
-                
+      
+         
+           
                 <form *ngIf="showAddTask2" [formGroup]="experienciaForm" (ngSubmit)="onSubmit()">
                   <input type="hidden" name="id" formControlName="id">
       
-                  <div class="form-group">
+                  <div >
                     <label class="subtitulo2" for="nombre_empresa">Nombre de la empresa</label>
                     <div >
                       <input type="text" name="nombre_empresa" formControlName="nombre_empresa" class="form-control" required>
@@ -40,14 +35,7 @@
                       <input type="date" name="fechafin" formControlName="fechafin" class="form-control" required>
                     </div>
                   </div>
-      
-                  <div>
-                    <label for="tipo_empleo">Tipo de empleo</label>
-                    <div>
-                      <input type="text" name="tipo_empleo" formControlName="tipo_empleo" class="form-control" required>
-                    </div>
-                  </div>
-                  
+                 
                   <div>
                     <label for="descripcion">Descripcion</label>
                     <div>
@@ -56,30 +44,35 @@
                   </div>
       
                   <div>
-                    <label for="es_trabajo_actual">Trabajo actual?</label>
-                    <div>
-                      <input type="text" name="es_trabajo_actual" formControlName="es_trabajo_actual" class="form-control" required>
-                    </div>
+                    <label for="es_trabajo_actual">Es Trabajo actual?</label>
+                    
+                    
+          <div>
+      <select id="es_trabajo_actual" name="es_trabajo_actual" formControlName="es_trabajo_actual" class="form-control" required>
+        <option value="si">si</option>
+        <option value="no">no</option>
+      </select>
+    </div>       
                   </div>
       
-    
+
                   <div >
                     <button type="submit"><span *ngIf="isEdicion2">Editar</span><span *ngIf="!isEdicion2">Agregar</span></button>
                   </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+    </form>
+        
       
     
         
     
         <div *ngIf="isUserLogged">
+          <p *ngIf="this.experienciaList == null"> No se cargaron datos de experiencia</p>
           <div>
             <ul  id="expList">
               <li *ngFor="let experiencia of experienciaList; let i = index">
+                
                 <div class="listafoto">
+                  
                     <div>
                       <div style="display:flex ; justify-content:space-between">
                         <h3 class="subtitulo2"  id="exp-nombre_empresa">{{ experiencia.nombre_empresa }} </h3>
@@ -88,10 +81,9 @@
                           <fa-icon [icon]="faTrash" (click)="onDeleteExpLaboral(i)" style="margin:20px"  ></fa-icon>
                         </div>
                       </div>
-                        <p class="subtitulo2">{{experiencia.es_trabajo_actual}}</p>
-                        <p><span  class="textocolumna" id="edu-nombre_titulo">{{ experiencia.descripcion }}</span>, <span id="edu-nivel">{{ experiencia.tipo_empleo}}</span>,
+                        <p><span  class="textocolumna" id="exp-nombre_titulo">{{ experiencia.descripcion }}</span>
                         </p>
-                        <p><span id="exp-fechainicio">{{ experiencia.fechainicio }}</span>   /   <span id="exp-fechafin">{{ experiencia.fechafin}}</span></p>
+                        <p><span id="exp-fechainicio">{{ experiencia.fechainicio }}</span><span *ngIf="experiencia.es_trabajo_actual == 'no'" id="exp-fechafin">/{{ experiencia.fechafin}}</span> <span *ngIf="experiencia.es_trabajo_actual == 'si'">/Actualidad</span></p> 
                       </div>       
                 </div>
                 <div >

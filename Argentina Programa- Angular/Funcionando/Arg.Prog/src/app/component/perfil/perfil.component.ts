@@ -33,7 +33,7 @@ export class PerfilComponent implements OnInit {
       this.isUserLogged = autenticacionService.isUserLogged();
       this.idUser = this.autenticacionService.idUser();
       this.subscription5 = this.portfolioService.onToggle().subscribe(value => this.showAddTask5 = value);
-      this.isEdicion5 = true;
+      this.isEdicion5 = false;
    this.personaForm =  this.formBuilder.group ({
     id:[this.idUser],
      nombre:[''],
@@ -44,14 +44,14 @@ export class PerfilComponent implements OnInit {
      fecha:[''],
      foto:[''],
      acercade:[''],
-     contrasena:['']
+     contraseña:['']
    })
   }
 
   ngOnInit(): void {
     this.isUserLogged=this.autenticacionService.isUserLogged();
     this.reloadData();
-    console.log(this.isUserLogged)
+  
   }
 
   private reloadData(){
@@ -72,12 +72,23 @@ private loadForm(persona:Persona){
     fecha:persona.fecha,
     foto:persona.foto,
     acercade:persona.acercade,
-    contrasena:persona.contrasena
+    contraseña:persona.contraseña
   })
 }
+onSubmit(){
+  let persona : Persona = {...this.persona,...this.personaForm.value}
+  this.portfolioService.editUser(persona).subscribe(
+    () => {
+    
+    this.reloadData();
+    }
+) 
+this.isEdicion5 = false
+}
 
-onEditUser(index: number) {
+onEditUser() {
   let persona:Persona = this.persona
   this.loadForm(persona)
+  this.isEdicion5=true
 }
 }

@@ -7,6 +7,7 @@ import { Persona } from '../config/PersonaDto';
 import { Experiencia } from '../config/Experiencia';
 import { Skill } from '../config/Skills';
 import { Proyecto } from '../config/Proyecto';
+import { Headder_footer } from '../config/headder_footer';
 
 
 @Injectable({
@@ -18,11 +19,13 @@ export class PortfolioService {
   private showAddTask3: boolean = false;
   private showAddTask4: boolean = false;
   private showAddTask5: boolean = false;
+  private showAddTask6: boolean = false;
   private subject = new Subject<any>();
   private subject2 = new Subject<any>();
   private subject3 = new Subject<any>();
   private subject4 = new Subject<any>();
    private subject5 = new Subject<any>();
+   private subject6 = new Subject<any>();
   
   constructor(private http:HttpClient) { }
 
@@ -99,6 +102,15 @@ deleteProyecto (id: number): Observable<any> {
   return this.http.delete<any>(config.baseUrl + "Proyecto/" + id);
 }
 
+findHeadder_footer(id:number): Observable<any> {
+  return this.http.get<any>(config.baseUrl + "Headder_footer/" + id);
+}
+saveHeadder_footer(headder_footer : Headder_footer): Observable<Headder_footer> {
+  return this.http.post<any>(config.baseUrl + "Headder_footer", headder_footer);
+}
+editHeadder_footer(headder_footer : Headder_footer): Observable<any> {
+  return this.http.put<any>(config.baseUrl + "Headder_footer",headder_footer);
+}
 
 
 
@@ -151,6 +163,15 @@ onToggle5(): Observable <any>{
   return this.subject5.asObservable();
 }
 
+toggleAddTask6(): void {
+
+  this.showAddTask6 = !this.showAddTask6;
+  this.subject6.next(this.showAddTask6);
+}
+
+onToggle6(): Observable <any>{
+  return this.subject6.asObservable();
+}
 
 
 }

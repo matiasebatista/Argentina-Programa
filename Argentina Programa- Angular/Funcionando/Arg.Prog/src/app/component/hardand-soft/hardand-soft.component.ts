@@ -72,6 +72,7 @@ export class HardandSoftComponent implements OnInit {
     
     })
 }
+
 onSubmit(){
   let skill: Skill = this.skillForm.value;
   if(!this.isEdicion3){

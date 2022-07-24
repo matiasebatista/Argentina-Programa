@@ -8,6 +8,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.Services.EducaciónService;
 import com.example.demo.Services.ExpLaboralService;
+import com.example.demo.Services.Headder_footerService;
 import com.example.demo.Services.PersonaService;
 import com.example.demo.Services.ProyectoService;
 import com.example.demo.Services.SkillService;
@@ -15,6 +16,7 @@ import com.example.demo.Services.SkillService;
 
 import com.example.demo.models.Educación;
 import com.example.demo.models.ExpLaboral;
+import com.example.demo.models.Headder_footer;
 import java.util.List;
 import com.example.demo.models.Persona;
 import com.example.demo.models.Proyecto;
@@ -50,7 +52,8 @@ public class Controller {
     EducaciónService EducaciónService;
     @Autowired
     SkillService SkillService;
-    
+    @Autowired
+    Headder_footerService Headder_footerService;
    
    
 
@@ -166,6 +169,22 @@ public class Controller {
     public void deleteSkill (@PathVariable Long id ){
          SkillService.deleteSkill(id);
     }
+    
+    
+     @GetMapping("/Headder_footer/{persona}")
+      @ResponseBody
+    public List<Headder_footer> findHeadder_footer(@PathVariable Long persona){
+        return Headder_footerService.findHeadder_footer(persona);
+    }
+    
+
+        @RequestMapping(value="/Headder_footer",method={RequestMethod.POST,RequestMethod.PUT})
+    public void saveHeadder_footer(@RequestBody Headder_footer info){
+        Headder_footerService.saveHeadder_footer(info);     
+    }
+    
+    
+    
     
 }
     

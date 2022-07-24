@@ -17,7 +17,7 @@
         <label for="contraseña">
             Contraseña
         </label>
-        <input type="contraseña" name="contraseña" class="form-control" formControlName="contraseña">
+        <input type="password" name="contraseña" class="form-control" formControlName="contraseña">
         <div *ngIf="formularioCreado.controls['contraseña'].invalid && formularioCreado.controls['contraseña'].dirty">
             <div *ngIf="formularioCreado.controls['contraseña'].errors?.['required']" class="alert alert-danger"
                 role="alert">

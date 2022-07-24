@@ -40,14 +40,20 @@
               <div>
                 <label for="nombre_titulo">Nombre del titulo</label>
                 <div>
-                  <input type="text" name="Nombre del titulo" formControlName="nombre_titulo" class="form-control" required>
+                  <input style="width:80%;" type="text" name="Nombre del titulo" formControlName="nombre_titulo" class="form-control" required>
                 </div>
               </div>
               
               <div>
                 <label for="nivel">Nivel</label>
                 <div>
-                  <input type="text" name="Nivel" formControlName="nivel" class="form-control" required>
+                  <select id="nivel" name="nivel" formControlName="nivel" class="form-control" required>
+                    <option>Primario</option>
+                    <option>Secundario</option>
+                    <option>Universitario</option>
+                    <option>Terciario</option>
+                    <option>Posgrado</option>
+                  </select>
                 </div>
               </div>
   

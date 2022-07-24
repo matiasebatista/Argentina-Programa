@@ -34,11 +34,8 @@ public class ExpLaboralService {
     }
      
    public void deleteExpLaboral(Long id){
-    
-            iExpLaboralRepository.deleteById(id);
-    
-
-    }
+           iExpLaboralRepository.deleteById(id);
+      }
       
     
 }

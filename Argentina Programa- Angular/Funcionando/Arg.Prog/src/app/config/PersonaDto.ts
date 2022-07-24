@@ -8,5 +8,5 @@ export interface Persona {
     acercade:string,
     correo:string,
     foto:string;
-    contrasena:string
+    contraseña:string
 }

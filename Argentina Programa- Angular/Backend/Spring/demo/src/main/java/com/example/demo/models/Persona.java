@@ -51,6 +51,8 @@ public class Persona implements Serializable {
     private String acercade;
     @Column (name="telefono")
     private String telefono;
+    @Column(name="headder_footer")
+    private String headder_footer;
    
 
     @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -61,7 +63,8 @@ public class Persona implements Serializable {
     private List<Proyecto> proyectos;
        @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ExpLaboral> exp_laboral;
-
+  @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Headder_footer> Headder_footer;
 
     
 }

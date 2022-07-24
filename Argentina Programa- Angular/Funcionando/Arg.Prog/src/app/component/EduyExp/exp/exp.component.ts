@@ -36,9 +36,8 @@ export class ExpComponent implements OnInit {
         id:[''],
         nombre_empresa:['',[Validators.required]],
         fechainicio:['',[Validators.required]],
-        fechafin:['',[Validators.required]],
+        fechafin:[''],
         descripcion:['',[Validators.required]],
-        tipo_empleo:['',[Validators.required]],
         persona:[this.idUser],
         es_trabajo_actual:['']
       })
@@ -61,7 +60,6 @@ private clearForm(){
     fechainicio:'',
     fechafin:'',
     descripcion:'',
-    tipo_empleo:'',
     persona:this.idUser,
     es_trabajo_actual:''
   })
@@ -73,7 +71,6 @@ private loadForm(experiencia : Experiencia ){
     nombre_empresa:experiencia.nombre_empresa,
     fechafin:experiencia.fechafin,
     fechainicio:experiencia.fechainicio,
-    tipo_empleo:experiencia.tipo_empleo,
     es_trabajo_actual:experiencia.es_trabajo_actual,
     descripcion:experiencia.descripcion
     

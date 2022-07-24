@@ -19,6 +19,8 @@ import { FontAwesomeModule,FaIconLibrary } from '@fortawesome/angular-fontawesom
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './component/button/button.component';
 import { ProyectoComponent } from './component/proyecto/proyecto.component';
+import { HeadderFooterComponent } from './component/headder-footer/headder-footer.component';
+
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import { ProyectoComponent } from './component/proyecto/proyecto.component';
 
     ButtonComponent,
      ProyectoComponent,
+     HeadderFooterComponent,
+
      
     
   
