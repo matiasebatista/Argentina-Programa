@@ -31,8 +31,12 @@ import lombok.Setter;
 public class Headder_footer implements Serializable{
   @Id
    @GeneratedValue(strategy = GenerationType.AUTO)  
-   @Column(name = "headder_footer")
-    private String headder_footer;
-
+    @Column(name = "id")
+    private Long id;
+  @Column(name = "headder")
+    private String headder;
+   @Column(name = "footer")
+    private String footer;
+    @Column(name = "Persona_id")
     private Long persona; 
 }

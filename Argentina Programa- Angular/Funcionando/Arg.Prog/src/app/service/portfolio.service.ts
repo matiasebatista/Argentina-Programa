@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import {config} from '../config/config';
 import { Educacion } from '../config/Educacion';
@@ -8,6 +8,7 @@ import { Experiencia } from '../config/Experiencia';
 import { Skill } from '../config/Skills';
 import { Proyecto } from '../config/Proyecto';
 import { Headder_footer } from '../config/headder_footer';
+import { faThemeisle } from '@fortawesome/free-brands-svg-icons';
 
 
 @Injectable({
@@ -172,6 +173,7 @@ toggleAddTask6(): void {
 onToggle6(): Observable <any>{
   return this.subject6.asObservable();
 }
+
 
 
 }

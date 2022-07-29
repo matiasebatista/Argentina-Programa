@@ -108,7 +108,7 @@ onNewSkill() {
   onDeleteSkill(index: number) {
     let skill : Skill = this.skillList[index];
     if (confirm("¿Está seguro que desea borrar la habilidad seleccionada?")) {
-      this.portfolioService.deleteExpLaboral(skill.id).subscribe(
+      this.portfolioService.deleteSkill(skill.id).subscribe(
         () => {
           this.reloadData();
         }
@@ -118,5 +118,7 @@ onNewSkill() {
   toggleAddTask3(){
     this.onNewSkill();
   }
+
+ 
 
 }

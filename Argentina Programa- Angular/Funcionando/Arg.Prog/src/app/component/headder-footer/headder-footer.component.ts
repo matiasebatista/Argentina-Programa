@@ -1,4 +1,4 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder,Validators,Form } from '@angular/forms';
 import { Headder_footer} from '../../config/headder_footer'
 import { PortfolioService } from 'src/app/service/portfolio.service';
@@ -36,7 +36,8 @@ export class HeadderFooterComponent implements OnInit {
     this.headder_footerForm=this.formBuilder.group({
       id:[''],
       persona:[this.idUser],
-      headder_footer:['',[Validators.required]],
+      headder:['',[Validators.required]],
+      footer:['',[Validators.required]]
     
     })
    }
@@ -57,7 +58,8 @@ export class HeadderFooterComponent implements OnInit {
     this.headder_footerForm.setValue({
       id:'',
       persona:this.idUser,
-      headder_footer:'',
+      headder:'',
+      footer:''
     
     })
   }
@@ -66,7 +68,8 @@ export class HeadderFooterComponent implements OnInit {
     this.headder_footerForm.setValue({
       id:headder_footer.id,
       persona:this.idUser,
-      headder_footer:headder_footer.headder_footer,
+      headder:headder_footer.headder,
+      footer:headder_footer.footer
      
   
     })
@@ -104,8 +107,6 @@ onNewSkill() {
     this.portfolioService.toggleAddTask6();
     this.loadForm(headder_footer);
   }
-
-
 
 
 

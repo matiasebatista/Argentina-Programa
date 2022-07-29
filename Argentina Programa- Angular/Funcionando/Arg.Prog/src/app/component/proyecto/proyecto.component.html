@@ -42,13 +42,13 @@
 
 </div>
 <div>
-    <ul  id="proyectoList">
+    <ul  id="proyectoList" style="list-style: none;">
       <li *ngFor="let proyecto of proyectoList; let i = index">
       
           <div *ngIf="isUserLogged" style="display:flex ; justify-content:space-between">
        
            
-                <h3 class="subtitulo2"  id="proy-nombre">{{ proyecto.nombre }} ({{ proyecto.Ano}})</h3> 
+                <h3 class="subtitulo2"  id="proy-nombre" >{{ proyecto.nombre }} ({{ proyecto.Ano}})</h3> 
                 <div *ngIf="!showAddTask4">
                   <fa-icon [icon]="faPencil" (click)="onEditProyecto(i)" style="margin:20px"></fa-icon>
                   <fa-icon [icon]="faTrash" (click)="onDeleteProyecto(i)" ></fa-icon>

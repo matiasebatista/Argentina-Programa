@@ -13,7 +13,7 @@
       
          
            
-                <form *ngIf="showAddTask2" [formGroup]="experienciaForm" (ngSubmit)="onSubmit()">
+                <form *ngIf="showAddTask2" [formGroup]="experienciaForm" (ngSubmit)="onSubmit()" >
                   <input type="hidden" name="id" formControlName="id">
       
                   <div >
@@ -68,7 +68,7 @@
         <div *ngIf="isUserLogged">
           <p *ngIf="this.experienciaList == null"> No se cargaron datos de experiencia</p>
           <div>
-            <ul  id="expList">
+            <ul  id="expList" style="list-style: none;">
               <li *ngFor="let experiencia of experienciaList; let i = index">
                 
                 <div class="listafoto">

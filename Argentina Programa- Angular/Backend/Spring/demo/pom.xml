@@ -86,6 +86,16 @@
 	  <version>5.6.4.Final</version>
 	  <type>pom.sha512</type>
 	 </dependency>
+	 <dependency>
+	  <groupId>com.cloudinary</groupId>
+	  <artifactId>cloudinary-http44</artifactId>
+	  <version>1.32.0</version>
+	 </dependency>
+	 <dependency>
+	  <groupId>com.google.firebase</groupId>
+	  <artifactId>firebase-admin</artifactId>
+	  <version>7.0.1</version>
+	 </dependency>
 	</dependencies>
 
 	<build>

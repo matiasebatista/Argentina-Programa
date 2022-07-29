@@ -7,6 +7,7 @@ export interface Persona {
     domicilio:string,
     acercade:string,
     correo:string,
-    foto:string;
-    contraseña:string
+    foto:string,
+    contraseña:string,
+
 }

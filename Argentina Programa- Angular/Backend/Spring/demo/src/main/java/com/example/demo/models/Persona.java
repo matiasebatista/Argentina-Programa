@@ -7,6 +7,7 @@ package com.example.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
@@ -34,8 +35,10 @@ public class Persona implements Serializable {
     private Long id;
     @Column(name = "nombre")
     private String nombre;
+    
     @Column(name ="contrasena")
     private String contraseña;
+    
     @Column(name = "apellido")
     private String apellido;
     @Column(name = "domicilio")
@@ -45,14 +48,22 @@ public class Persona implements Serializable {
     private Date fecha;
     @Column(name = "correo")
     private String correo;
-    @Column(name = "foto")
-    private String foto;
+    
+   @Lob
+   @Column(name = "foto")
+   private Blob blobFoto;
+   
+   @Transient
+   private String foto;
+   
     @Column (name = "acercade")
     private String acercade;
     @Column (name="telefono")
     private String telefono;
-    @Column(name="headder_footer")
-    private String headder_footer;
+
+    
+    
+
    
 
     @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -66,5 +77,4 @@ public class Persona implements Serializable {
   @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Headder_footer> Headder_footer;
 
-    
 }

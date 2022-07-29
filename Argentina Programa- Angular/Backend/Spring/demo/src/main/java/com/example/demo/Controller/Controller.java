@@ -99,6 +99,7 @@ public class Controller {
       @PutMapping("/personas")
     public void editUser(@RequestBody Persona pers){
          PersonaService.editUser(pers);
+         
     }
     
     @GetMapping("/ExpLaboral/{persona}")

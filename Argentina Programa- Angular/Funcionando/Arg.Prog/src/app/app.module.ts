@@ -11,7 +11,7 @@ import { PerfilComponent } from './component/perfil/perfil.component';
 import { EduComponent } from './component/EduyExp/edu/edu.component';
 import { ExpComponent } from './component/EduyExp/exp/exp.component';
 import { HardandSoftComponent } from './component/hardand-soft/hardand-soft.component';
-
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { PortfolioService } from './service/portfolio.service';
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './service/interceptor.service';
@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './component/button/button.component';
 import { ProyectoComponent } from './component/proyecto/proyecto.component';
 import { HeadderFooterComponent } from './component/headder-footer/headder-footer.component';
+
 
 
 
@@ -38,6 +39,7 @@ import { HeadderFooterComponent } from './component/headder-footer/headder-foote
      ProyectoComponent,
      HeadderFooterComponent,
 
+
      
     
   
@@ -50,6 +52,7 @@ import { HeadderFooterComponent } from './component/headder-footer/headder-foote
     ReactiveFormsModule,
     FontAwesomeModule,
     HttpClientModule,
+    NgxDropzoneModule
     
     
   ],

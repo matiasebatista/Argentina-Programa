@@ -8,14 +8,19 @@ import { faTrash,faPencil,faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 
 
+
+
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.css']
+  styleUrls: ['./perfil.component.css'],
+  providers:[PortfolioService]
 })
 
 
 export class PerfilComponent implements OnInit {
+
+  files:File[] = [];
   persona: Persona;
   isUserLogged: Boolean ;
   personaForm: FormGroup;
@@ -26,6 +31,8 @@ export class PerfilComponent implements OnInit {
   isEdicion5:boolean;
   showAddTask5:boolean = false;
   subscription5?: Subscription;
+  imgURL:any;
+ imagePath:any;
   constructor( private portfolioService: PortfolioService,
     private autenticacionService: AutenticacionService,
     private formBuilder: FormBuilder) { 
@@ -44,7 +51,7 @@ export class PerfilComponent implements OnInit {
      fecha:[''],
      foto:[''],
      acercade:[''],
-     contraseña:['']
+     contraseña:[''],
    })
   }
 
@@ -72,17 +79,22 @@ private loadForm(persona:Persona){
     fecha:persona.fecha,
     foto:persona.foto,
     acercade:persona.acercade,
-    contraseña:persona.contraseña
+    contraseña:persona.contraseña,
+
   })
 }
 onSubmit(){
   let persona : Persona = {...this.persona,...this.personaForm.value}
+console.log(this.personaForm.value)
+
   this.portfolioService.editUser(persona).subscribe(
     () => {
     
     this.reloadData();
     }
 ) 
+
+
 this.isEdicion5 = false
 }
 
@@ -91,4 +103,18 @@ onEditUser() {
   this.loadForm(persona)
   this.isEdicion5=true
 }
+
+onFileChange(event:any){
+  if(event.target.files.length > 0){
+    const file:File= event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file)
+    reader.onload = (_event) => { 
+      this.imgURL =  reader.result; 
+     this.personaForm.value.foto = reader.result ; 
+    }
+  }
+}
+
+
 }

@@ -5,11 +5,16 @@
 package com.example.demo.Services;
 
 
+
 import com.example.demo.models.Persona;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.Repositories.IPersonaRepository;
+import com.example.utils.ImageUtils;
+
+
+
 
 
 /**
@@ -21,7 +26,7 @@ public class PersonaService {
    @Autowired
    
     IPersonaRepository iPersonaRepository;
-      
+
   
   
     
@@ -50,7 +55,12 @@ public class PersonaService {
         return null;
     }
   
-    public void editUser(Persona info){
+    public void editUser(Persona info){ 
+        try {
+                info.setBlobFoto(ImageUtils.base64ToBlob(info.getFoto()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            } 
             iPersonaRepository.save(info);
       
       
@@ -70,4 +80,10 @@ public class PersonaService {
             return null;
         }
     }
+     
+     
+
+     
+     
+     
 }
