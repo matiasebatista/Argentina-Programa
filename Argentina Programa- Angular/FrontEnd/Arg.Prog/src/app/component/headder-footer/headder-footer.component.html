@@ -49,9 +49,9 @@
         </div>
 
         <div>
-            <label for="facebook">Facebook</label>
+            <label for="facebook">linkedIn</label>
             <div>
-                <input type="text" name="facebook" formControlName="facebook" class="form-control">
+                <input type="text" name="facebook" formControlName="facebook" class="form-control" required>
             </div>
         </div>
         <div>
@@ -62,5 +62,5 @@
         </div>
     </div>
 
-    <button type="submit">Enviar</button>
+    <button [disabled]="!headder_footerForm.valid" type="submit">Enviar</button>
 </form>
