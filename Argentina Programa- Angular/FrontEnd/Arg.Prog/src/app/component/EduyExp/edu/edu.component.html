@@ -97,8 +97,8 @@
             <div class="listafoto">
               <div *ngIf="isUserLogged"  style="display:flex;justify-content: space-between;flex-direction: row;">
                 <div style="display:flex;" >
-                <img id="edu-img" class="fotopequeña"  src="{{educacion.img }}">
-                <img class="fotopequeña" *ngIf="educacion.img == null" src="'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png'" >
+                <div id="edu-img" class="fotopequeña" style="width:30px;height:30px" ><img id="edu-img" class="fotopequeña" style="width:30px;height:30px"  src="{{educacion.img }}"></div>
+                <img class="fotopequeña" style="width:30px;height:30px" *ngIf="educacion.img == null" src="'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png'" >
               <div style="margin-left:20px">
                 <h3 class="subtitulo2" id="edu-establecimiento">{{ educacion.establecimiento}} </h3>
               </div>
