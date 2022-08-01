@@ -1,0 +1,66 @@
+<div class="navbar">
+    <div style=" display:flex">
+        <img
+            src="https://res.cloudinary.com/duooheafl/image/upload/v1659219717/fotos%20portfolio/icono_arg_programa_sdicb9.jpg">
+        <p style="color:white;font-size: 600;padding-top:10px"> #YoProgramo</p>
+    </div>
+    <div style="display: flex;">
+        <div >
+            <a *ngIf=" this.headder_footer?.facebook != null && this.headder_footer?.facebook != ''" href="{{headder_footer.facebook}}"> <img 
+                    src="https://res.cloudinary.com/duooheafl/image/upload/v1659292862/fotos%20portfolio/317725_linkedin_social_icon_e0emqs.png"
+                    style="width:30px;padding-top: 20px;padding-right: 10px;"> </a>
+            <a *ngIf=" this.headder_footer?.instagram != null && this.headder_footer?.instagram != ''" href="{{headder_footer.instagram}}"> <img  
+                    src="https://res.cloudinary.com/duooheafl/image/upload/v1659299371/fotos%20portfolio/4102579_applications_instagram_media_social_icon_pqf8n6.png"
+                    style="width:30px;padding-top: 20px;padding-right: 10px;"> </a>
+        </div>
+        <p style="color:white;font-size: 600;padding-right: 40px;padding-top:10px" (click)="logout()">Logout</p>
+
+    </div>
+</div>
+
+<img *ngIf="this.headder_footer?.headder != null && this.headder_footer?.headder != ''" class="headder_footer" src="{{headder_footer.headder}}">
+
+
+<fa-icon [icon]="faPencil" class="icono" *ngIf="isEdicion6 == true"  (click)="onEditHeadder_footer()"
+    style="margin-top:20px;margin-right: 20px;"></fa-icon>
+<fa-icon [icon]="faPlus" class="icono" *ngIf=" isEdicion6 == false" (click)="onNewHeadder_footer()"
+    style="margin-top:20px;margin-right: 20px;"></fa-icon>
+
+
+
+
+
+<form *ngIf="showAddTask6" [formGroup]="headder_footerForm" (ngSubmit)="onSubmit()">
+
+    <div style="display:flex;justify-content:center;flex-direction:row">
+        <div>
+            <label for="headder" id="headder">Headder</label>
+            <ngx-dropzone (change)="onSelect($event)" (change)="onUpload()">
+                <ngx-dropzone-label>Place your image Here</ngx-dropzone-label>
+                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                    [removable]="true" (removed)="onRemove(f)">
+                    <ngx-dropzone-label>({{ f.type }})</ngx-dropzone-label>
+                </ngx-dropzone-image-preview>
+            </ngx-dropzone>
+        </div>
+
+        <div>
+            <input name="footer" [hidden]="true" formControlName="footer" class="form-control">
+        </div>
+
+        <div>
+            <label for="facebook">Facebook</label>
+            <div>
+                <input type="text" name="facebook" formControlName="facebook" class="form-control">
+            </div>
+        </div>
+        <div>
+            <label for="instagram">Instagram</label>
+            <div>
+                <input type="text" name="instagram" formControlName="instagram" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <button type="submit">Enviar</button>
+</form>

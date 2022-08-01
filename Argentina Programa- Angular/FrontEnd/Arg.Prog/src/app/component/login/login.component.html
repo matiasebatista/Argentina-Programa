@@ -1,0 +1,50 @@
+<div class="navbar">
+    <div style=" display:flex">
+    <img src="https://res.cloudinary.com/duooheafl/image/upload/v1659219717/fotos%20portfolio/icono_arg_programa_sdicb9.jpg">
+    <p style="color:white;font-size: 600;padding-top:20px"> #YoProgramo</p>
+    </div>
+    <div>
+    
+    <p style="color:white;font-size: 600;padding-right: 40px;padding-top:20px" >Login</p>
+    </div>
+    </div>
+
+
+
+<div class="login-form" >
+    <form [formGroup]="formularioCreado">
+        <h1>Login</h1>
+        <div class="form-group" class="input-field">
+            <label for="correo">
+                Correo
+            </label>
+            <input type="correo" name="correo" class="form-control" formControlName="correo">
+            <div *ngIf="formularioCreado.controls['correo'].invalid && formularioCreado.controls['correo'].dirty">
+                <div *ngIf="formularioCreado.controls['correo'].errors?.['required']" class="alert alert-danger" role="alert">
+                    El correo es requerido
+                </div>
+                <div *ngIf="formularioCreado.controls['correo'].errors?.['correo']" class="alert alert-danger" role="alert">
+                    El correo debe tener un formato valido
+                </div>
+            </div>
+        </div>
+        <div class="form-group" class="input-field">
+            <label for="contraseña">
+                Contraseña
+            </label>
+            <input type="password" name="contraseña" class="form-control" formControlName="contraseña">
+            <div *ngIf="formularioCreado.controls['contraseña'].invalid && formularioCreado.controls['contraseña'].dirty">
+                <div *ngIf="formularioCreado.controls['contraseña'].errors?.['required']" class="alert alert-danger"
+                    role="alert">
+                    La contraseña es requerida
+                </div>
+                <div *ngIf="formularioCreado.controls['contraseña'].errors?.['minlength']" class="alert alert-danger"
+                    role="alert">
+                    La contraseña debe tener al menos 8 caracteres
+                </div>
+            </div>
+        </div>
+        <button  (click)="onEnviar()" [disabled]="!formularioCreado.valid" class="btn btn-primary">Enviar</button>
+    </form>
+    </div>
+    

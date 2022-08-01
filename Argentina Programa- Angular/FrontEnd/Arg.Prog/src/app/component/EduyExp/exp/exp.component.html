@@ -1,0 +1,101 @@
+<div  class="columna1">
+  <div>
+
+
+  <span style="display: flex;justify-content: space-between;align-items: center;">
+    <p style="padding: 10px;" class="subtitulo"> Experiencia </p><app-button (btnClick)="toggleAddTask2()"  style="margin:20px"
+      text="{{ showAddTask2 ? 'close': 'Agregar una nueva Experiencia'}}"><i class="fa-solid fa-plus"></i></app-button>
+      
+  </span>
+  
+  
+  <div id="experiencia">
+    
+       
+         
+              <form *ngIf="showAddTask2" [formGroup]="experienciaForm" (ngSubmit)="onSubmit()" >
+                <input type="hidden" name="id" formControlName="id">
+    
+                <div >
+                  <label class="subtitulo2" for="nombre_empresa">Nombre de la empresa</label><abbr title="Este campo es obligatorio">*</abbr>
+                  <div >
+                    <input type="text" name="nombre_empresa" formControlName="nombre_empresa" class="form-control" required>
+                  </div>
+                </div>
+    
+                <div >
+                  <label for="fechainicio" >Fecha de inicio</label><abbr title="Este campo es obligatorio">*</abbr>
+                  <div >
+                    <input type="date" name="fechainicio" formControlName="fechainicio" class="form-control" required>
+                  </div>
+                </div>
+                <div >
+                  <label for="fechafin" >Fecha de finalizacion</label> <abbr title="En caso de colocar que es su trabajo actual, este campo se autodefinira">*</abbr>
+                  <div >
+                    <input type="date" name="fechafin" formControlName="fechafin" class="form-control" >
+                  </div>
+                </div>
+               
+                <div>
+                  <label for="descripcion">Descripcion</label>
+                  <div>
+                    <textarea rows="10" cols="10"  name="descripcion" formControlName="descripcion" class="form-control" required style="width:70%;height:50%;resize: none;" ></textarea>
+                  </div>
+                </div>
+    
+                <div>
+                  <label for="es_trabajo_actual">Es Trabajo actual?</label> <abbr title="Este campo es obligatorio">*</abbr>
+        <div>
+    <select id="es_trabajo_actual" name="es_trabajo_actual" formControlName="es_trabajo_actual" class="form-control" required>
+      <option value="si">si</option>
+      <option value="no">no</option>
+    </select>
+  </div>       
+                </div>
+    
+
+                <div >
+                  <button type="submit" style="margin-top: 10px;" [disabled]="!experienciaForm.valid"><span *ngIf="isEdicion2">Editar</span><span *ngIf="!isEdicion2" >Agregar</span></button>
+                </div>
+  </form>
+      
+    
+
+      
+  
+      <div *ngIf="isUserLogged">
+        
+        <div>
+          <div *ngIf="experienciaList.length ==0"  style="display:flex;justify-content: center;align-items: center;flex-direction: column;">
+          <p > Aun no se han cargado datos de experiencia</p>
+          <img src="https://res.cloudinary.com/duooheafl/image/upload/v1659294135/fotos%20portfolio/7228381_searching_cloud_find_browse_information_icon_ua55pb.png" style="width:30%">
+        </div>
+          <ul  id="expList" style="list-style: none;">
+            <li *ngFor="let experiencia of experienciaList; let i = index">
+             
+              <div class="listafoto">
+                
+                  <div>
+                    <div style="display:flex ; justify-content:space-between">
+                      <h3 class="subtitulo2"  id="exp-nombre_empresa">{{ experiencia.nombre_empresa }} </h3>
+                      <div *ngIf="!showAddTask2">
+                        <fa-icon [icon]="faPencil" class="icono" (click)="onEditExpLaboral(i)"  ></fa-icon>
+                        <fa-icon [icon]="faTrash"  class="icono"  (click)="onDeleteExpLaboral(i)"  ></fa-icon>
+                      </div>
+                    </div>
+                      <p><span  class="textocolumna" id="exp-nombre_titulo">{{ experiencia.descripcion }}</span>
+                      </p>
+                      <p><span id="exp-fechainicio">{{ experiencia.fechainicio }}</span><span *ngIf="experiencia.es_trabajo_actual == 'no'" id="exp-fechafin">/{{ experiencia.fechafin}}</span> <span *ngIf="experiencia.es_trabajo_actual == 'si' ">/Actualidad</span></p> 
+                    </div>       
+              </div>
+              <div >
+          
+              </div>
+            </li>
+          </ul>
+        </div>
+  
+        </div> 
+      </div>
+  </div>
+</div>

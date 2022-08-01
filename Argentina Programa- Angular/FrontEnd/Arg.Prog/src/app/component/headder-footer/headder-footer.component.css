@@ -1,0 +1,16 @@
+.headder_footer{
+    height: 200px;
+	background-size:cover;	
+    width: 100%;
+   min-height: 200px; 
+
+
+}
+
+.navbar{
+	background-color: #53a7ea;
+	height: 70px;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+}

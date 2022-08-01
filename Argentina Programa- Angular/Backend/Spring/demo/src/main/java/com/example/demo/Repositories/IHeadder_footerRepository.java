@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IHeadder_footerRepository extends CrudRepository<Headder_footer,Long> {
 
-    public List<Headder_footer> findByPersona(Long id);
+    public Headder_footer findByPersona(Long id);
+
     
 }

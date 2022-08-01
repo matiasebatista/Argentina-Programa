@@ -24,8 +24,9 @@ public class Headder_footerService {
      public void saveHeadder_footer(Headder_footer info){
         iHeadder_footerRepository.save(info);
     }
-     public List<Headder_footer> findHeadder_footer(Long id){
-      return iHeadder_footerRepository.findByPersona(id);
+     public Headder_footer findHeadder_footer(Long id){
+      Headder_footer h = iHeadder_footerRepository.findByPersona(id);
+        return h;
     }
      
      public void editHeadder_footer(Long id,Headder_footer info){

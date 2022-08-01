@@ -37,6 +37,11 @@ public class Headder_footer implements Serializable{
     private String headder;
    @Column(name = "footer")
     private String footer;
+     @Column(name="facebook")
+   private String facebook;
+    @Column(name="instagram")
+   private String instagram;
+    
     @Column(name = "Persona_id")
     private Long persona; 
 }

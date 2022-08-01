@@ -1,0 +1,44 @@
+.fotoperfil { 
+	
+	background-size: auto;
+	overflow: hidden;
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+ }
+ .subtitulo{
+	font-size: 180%;
+	font-weight: 600;
+}
+
+
+.grande{
+	font-weight:600;
+	font-size:150%;
+}
+.mediano{
+	font-weight:300;
+	font-size:100%;
+}
+.borde {
+	border: 2px solid #53a7ea;
+	border-radius: 50px;
+	margin-left: 20px;
+	margin-right: 20px;
+	box-shadow: 4px 4px #53a7ea, 8px 8px #FF7A59, 12px 12px #334758;
+  }
+  
+  .icono{
+    margin-right:20px;
+    transition: transform 1s; 
+	padding-right: 20px;
+	padding-bottom: 5px;
+}
+.icono:hover {
+   color:#53a7ea; 
+}
+.navbar{
+	background-color: blue;
+	height: 200px;
+	width:max-content ;
+}

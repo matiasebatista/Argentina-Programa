@@ -1,0 +1,70 @@
+<div>
+  <span style="display: flex;justify-content: space-between;align-items: center;">
+    <p style="padding-left: 30px;" class="subtitulo"> Hard and soft skills</p>
+    <app-button (btnClick)="toggleAddTask3()"  style="padding-right: 20px;" text="{{ showAddTask3 ? 'close': 'Agregar una nueva Habilidad'}}"><i
+        class="fa-solid fa-plus"></i></app-button>
+  </span>
+  <div id="skill">
+    <div id="skillForm" tabindex="-1" aria-labelledby="skillFormLabel" aria-hidden="true">
+      <div>
+        <div>
+
+          <form *ngIf="showAddTask3" [formGroup]="skillForm" (ngSubmit)="onSubmit()">
+
+            <input type="hidden" name="id" formControlName="id">
+            <div class="form-group">
+              <label for="Nombre">Habilidad</label><abbr title="Este campo es obligatorio">*</abbr>
+              
+              <div>
+                <input type="text" name="nombre" formControlName="nombre" class="form-control" required>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="porcentaje">Porcentaje</label><abbr title="Este campo es obligatorio">*</abbr>
+        
+              <div>
+                <input type="number" name="porcentaje" formControlName="porcentaje" class="form-control" max="100" min="0" oninput="if(this.value >100){
+                  this.value =100;
+                }if(this.value<0){
+                  this.value=0
+                }" required>
+              </div>
+
+            </div>
+            <button type="submit" [disabled]="!skillForm.valid"><span *ngIf="isEdicion3">Editar</span><span
+                *ngIf="!isEdicion3">Agregar</span></button>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div>
+        <div *ngIf="skillList.length ==0"  style="display:flex;justify-content: center;align-items: center;flex-direction: column;">
+        <p > Aun no se han cargado datos de experiencia</p>
+        <img src="https://res.cloudinary.com/duooheafl/image/upload/v1659294135/fotos%20portfolio/7228381_searching_cloud_find_browse_information_icon_ua55pb.png" style="width:20%">
+      </div>
+      <ul id="skillList" style="list-style: none;">
+        <li *ngFor="let skill of skillList; let i = index">
+          <div style="display:flex;justify-content: center;align-items: center;flex-direction: column;">
+            <div style="justify-content:center ;">
+              <p class="subtitulo2" id="Nombre"> {{ skill.nombre }} ({{skill.porcentaje}}%) <span>
+                  <fa-icon [icon]="faPencil" class="icono" style="padding-left: 50px;" (click)="onEditSkill(i)"></fa-icon>
+                  <fa-icon [icon]="faTrash" class="icono" (click)="onDeleteSkill(i)" style="margin:20px"></fa-icon>
+                </span> </p>
+
+            </div>
+            <progress id="file" min="0" max="100" value="{{skill.porcentaje}}" style="width: 50%;height: 30px;">
+            </progress>
+          </div>
+
+        </li>
+      </ul>
+
+    </div>
+  </div>

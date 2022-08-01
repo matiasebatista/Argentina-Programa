@@ -7,11 +7,14 @@ package com.example.demo.Services;
 
 
 import com.example.demo.models.Persona;
+
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.Repositories.IPersonaRepository;
-import com.example.utils.ImageUtils;
+
 
 
 
@@ -55,31 +58,15 @@ public class PersonaService {
         return null;
     }
   
-    public void editUser(Persona info){ 
-        try {
-                info.setBlobFoto(ImageUtils.base64ToBlob(info.getFoto()));
-            } catch (Exception e) {
-                e.printStackTrace();
-            } 
+    public void editUser(Persona info){
+            
+           
             iPersonaRepository.save(info);
       
       
     }
         
-    public String findAcercade(Long id){
-      return iPersonaRepository.findAcercadebyid(id);
-    }
-    
-     public String editAcercade(Long id,String s){
-        try{
-            Persona p =   iPersonaRepository.findById(id).get();
-            p.setAcercade(s);
-            iPersonaRepository.save(p);
-            return s;
-        }catch(Exception e){
-            return null;
-        }
-    }
+   
      
      
 

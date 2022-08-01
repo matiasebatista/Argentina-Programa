@@ -1,0 +1,28 @@
+
+  .subtitulo2{
+    font-weight: 600;
+    font-size: 100%;
+    text-indent: 20px;
+}
+.subtitulo{
+    font-size: 180%;
+    font-weight: 600;
+}
+
+.icono{
+  transition: transform 1s; 
+}
+.icono:hover {
+ color:#53a7ea; 
+}
+
+li:hover{
+  border: 1px solid #53a7ea; ;
+  width:100%;
+
+ 
+}
+ul{
+  padding:0%;
+  margin-left: 10px;
+}

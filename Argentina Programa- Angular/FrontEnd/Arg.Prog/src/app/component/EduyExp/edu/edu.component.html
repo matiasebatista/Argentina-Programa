@@ -1,0 +1,130 @@
+<div class="columna2" >
+  <span style="display: flex;justify-content: space-between;align-items: center;">
+    <p style="padding: 10px;" class="subtitulo"> Educación </p>
+    <app-button (btnClick)="toggleAddTask()" style="margin:20px"
+      text="{{ showAddTask ? 'close': 'Agregar una nueva educación'}}"></app-button>
+
+  </span>
+
+
+  <div id="educacion">
+    <!-- Modal -->
+    <div id="educacionForm" tabindex="-1" aria-labelledby="educacionFormLabel" aria-hidden="true">
+      
+        <div>
+
+          
+
+
+            <form *ngIf="showAddTask" [formGroup]="educacionForm" (ngSubmit)="onSubmit()">
+
+              <div class="form-group">
+                <label for="establecimiento">Establecimiento</label><abbr title="Este campo es obligatorio">*</abbr>
+                <div>
+                  <input type="text" name="establecimiento" formControlName="establecimiento" class="form-control"  required>
+                </div>
+              </div>
+
+              <div>
+                <label for="año_ingreso">Año de ingreso</label><abbr title="Este campo es obligatorio">*</abbr>
+                <div>
+                  <input type="date" name="año de ingreso" formControlName="ano_ingreso" class="form-control" required>
+                </div>
+              </div>
+              <div>
+                <label for="año_egreso">Año de egreso</label>
+                <div>
+                  <input type="date" name="año de egreso" formControlName="ano_egreso" class="form-control"  >
+                </div>
+              </div>
+
+              <div>
+                <label for="nombre_titulo">Nombre del titulo</label><abbr title="Este campo es obligatorio">*</abbr>
+                <div>
+                  <input style="width:80%;" type="text" name="Nombre del titulo" formControlName="nombre_titulo"
+                    class="form-control" required>
+                    
+                </div>
+              </div>
+
+              <div>
+                <label for="nivel">Nivel</label><abbr title="Este campo es obligatorio">*</abbr>
+                <div>
+                  <select id="nivel" name="nivel" formControlName="nivel" class="form-control" required>
+                    <option>Primario</option>
+                    <option>Secundario</option>
+                    <option>Universitario</option>
+                    <option>Terciario</option>
+                    <option>Posgrado</option>
+                  </select>
+                </div>
+            <p *ngIf=" this.educacionForm.value.nivel == null   "> Esta información es requerida</p>
+          
+                <label for="imagen" id="imagen">Logo</label>
+                <ngx-dropzone (change)="onSelect($event)"  style="width:30%" (change)="onUpload()" >
+                  <ngx-dropzone-label>Place your image Here</ngx-dropzone-label>
+                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)" >
+                    <ngx-dropzone-label>({{ f.type }})</ngx-dropzone-label>
+                  </ngx-dropzone-image-preview>
+                </ngx-dropzone>
+              </div>
+          
+
+
+
+              <div>
+                <button type="submit" [disabled]="!educacionForm.valid"  ><span *ngIf="isEdicion">Editar</span><span
+                    *ngIf="!isEdicion">Agregar</span></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      
+
+
+
+
+
+    <div>
+
+      <div>
+        <div *ngIf="educacionList.length ==0"  style="display:flex;justify-content: center;align-items: center;flex-direction: column;">
+          <p > Aun no se han cargado datos de educacion</p>
+          <img src="https://res.cloudinary.com/duooheafl/image/upload/v1659294135/fotos%20portfolio/7228381_searching_cloud_find_browse_information_icon_ua55pb.png" style="width:30%">
+        </div>
+        <ul style="list-style: none;">
+          <li *ngFor="let educacion of educacionList; let i = index">
+            <div class="listafoto">
+              <div *ngIf="isUserLogged"  style="display:flex;justify-content: space-between;flex-direction: row;">
+                <div style="display:flex;" >
+                <img id="edu-img" class="fotopequeña"
+                  src="{{educacion.img || 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png'}}">
+              <div style="margin-left:20px">
+                <h3 class="subtitulo2" id="edu-establecimiento">{{ educacion.establecimiento}} </h3>
+              </div>
+              </div>
+                <div *ngIf="!showAddTask" style="padding-top:20px">
+                  <fa-icon [icon]="faPencil" class="icono" (click)="onEditEducacion(i)" ></fa-icon>
+                  <fa-icon [icon]="faTrash" class="icono" (click)="onDeleteEducacion(i)"></fa-icon>
+                </div>
+             
+            </div>
+              <div>
+                <p><span class="textocolumna" id="edu-nombre_titulo">{{ educacion.nombre_titulo }}</span> <span
+                    id="edu-nivel">({{ educacion.nivel}})</span>
+                </p>
+                <p><span id="edu-start">{{ educacion.ano_ingreso }}</span> / <span id="edu-año_egreso"
+                    *ngIf="educacion.ano_egreso !=null">{{ educacion.ano_egreso}}</span>
+                     <span id="edu-año_egreso" *ngIf="educacion.ano_egreso==null">Actualidad</span>
+                </p>
+              </div>
+
+
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>

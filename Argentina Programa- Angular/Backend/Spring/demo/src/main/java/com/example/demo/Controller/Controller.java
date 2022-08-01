@@ -23,7 +23,7 @@ import com.example.demo.models.Proyecto;
 import com.example.demo.models.Skill;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -84,17 +84,8 @@ public class Controller {
         return PersonaService.loginUser(userCredential);
     }
                
-       @GetMapping("/Acercade/{id}")
-         @ResponseBody
-    public String findAcercade(@PathVariable Long id){
-        return PersonaService.findAcercade(id);
-    }
     
-    @PutMapping("/Acercade/{id}")
-    public String editAcercade(@PathVariable Long id, @RequestBody String inf){
-        return PersonaService.editAcercade(id,inf);
-    }
-
+    
     
       @PutMapping("/personas")
     public void editUser(@RequestBody Persona pers){
@@ -174,8 +165,8 @@ public class Controller {
     
      @GetMapping("/Headder_footer/{persona}")
       @ResponseBody
-    public List<Headder_footer> findHeadder_footer(@PathVariable Long persona){
-        return Headder_footerService.findHeadder_footer(persona);
+    public Headder_footer findHeadder_footer(@PathVariable Long persona){
+         return Headder_footerService.findHeadder_footer(persona);
     }
     
 
