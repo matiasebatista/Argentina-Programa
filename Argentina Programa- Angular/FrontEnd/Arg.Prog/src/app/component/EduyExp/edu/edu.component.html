@@ -58,7 +58,7 @@
                     <option>Posgrado</option>
                   </select>
                 </div>
-            <p *ngIf=" this.educacionForm.value.nivel == null   "> Esta información es requerida</p>
+          
           
                 <label for="imagen" id="imagen">Logo</label>
                 <ngx-dropzone (change)="onSelect($event)"  style="width:30%" (change)="onUpload()" >
@@ -97,8 +97,8 @@
             <div class="listafoto">
               <div *ngIf="isUserLogged"  style="display:flex;justify-content: space-between;flex-direction: row;">
                 <div style="display:flex;" >
-               <img class="foto" src="{{educacion.img}}  ">
-               <img class="foto" *ngIf="this.educacionForm.value.img == null" src="'https://res.cloudinary.com/duooheafl/image/upload/v1659399529/fotos%20portfolio/image-not-found-icon_k3ipho.png'">
+               <img class="foto" *ngIf="educacion.img !== null" src="{{educacion.img}}">
+               <img class="foto" *ngIf="educacion.img == null" src="https://res.cloudinary.com/duooheafl/image/upload/v1659399529/fotos%20portfolio/image-not-found-icon_k3ipho.png">
              
               <div style="margin-left:20px">
                 <h3 class="subtitulo2" id="edu-establecimiento">{{ educacion.establecimiento}} </h3>

@@ -35,7 +35,7 @@
     <div style="display:flex;justify-content:center;flex-direction:row">
         <div>
             <label for="headder" id="headder">Headder</label>
-            <ngx-dropzone (change)="onSelect($event)" (change)="onUpload()">
+            <ngx-dropzone (change)="onSelect($event)" (change)="onUpload()" >
                 <ngx-dropzone-label>Place your image Here</ngx-dropzone-label>
                 <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
                     [removable]="true" (removed)="onRemove(f)">
@@ -45,7 +45,7 @@
         </div>
 
         <div>
-            <input name="footer" [hidden]="true" formControlName="footer" class="form-control">
+            <input name="footer" [hidden]="true" formControlName="footer" class="form-control" >
         </div>
 
         <div>
