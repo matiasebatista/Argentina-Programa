@@ -1,0 +1,2 @@
+El deploy se encuentra realizado en Heroku y Firebase, el primero dejo de ser pago asi que tengo que moverlo.
+La base de datos se encuentra en un servidor gratuito en la nube.

@@ -35,7 +35,7 @@ public class PersonaService {
     
     
     public List<Persona> getUsers(){
-        return (List<Persona>) iPersonaRepository.findAll();
+        return  (List<Persona>) iPersonaRepository.findAll();
     }
       
     public Persona findUser(Long id){
